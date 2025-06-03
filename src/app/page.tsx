@@ -2,6 +2,7 @@ import ExperienceCard from "@/components/experience-card";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
 import { Github, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import type React from "react";
 
 const Home: React.FC = () => {
@@ -70,9 +71,8 @@ const Home: React.FC = () => {
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-8">
-              <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-4xl font-bold text-white">
-                BY
-              </div>
+              <Image src="/me.jpeg" alt="A picture of me" width={128} height={128} className="rounded-full bg-cover" />
+
               <h1 className="mb-4 text-5xl font-bold text-slate-900 md:text-6xl dark:text-white">Bojidar Yovchev</h1>
               <p className="mb-6 text-2xl font-semibold text-blue-600 dark:text-blue-400">Software Engineer</p>
               <div className="mx-auto max-w-4xl space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
