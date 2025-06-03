@@ -71,7 +71,7 @@ const Home: React.FC = () => {
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-8">
-              <Image src="/me.jpeg" alt="A picture of me" width={128} height={128} className="rounded-full bg-cover" />
+              <Image src="/me.png" alt="A picture of me" width={128} height={128} className="rounded-full bg-cover" />
 
               <h1 className="mb-4 text-5xl font-bold text-slate-900 md:text-6xl dark:text-white">Bojidar Yovchev</h1>
               <p className="mb-6 text-2xl font-semibold text-blue-600 dark:text-blue-400">Software Engineer</p>
