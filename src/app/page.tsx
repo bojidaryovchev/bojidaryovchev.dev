@@ -72,7 +72,14 @@ const Home: React.FC = () => {
           <div className="text-center">
             <div className="mb-8">
               <div className="mb-6 flex justify-center">
-                <Image src="/me.png" alt="A picture of me" width={128} height={128} className="rounded-full bg-cover" />
+                <Image
+                  src="/me.png"
+                  alt="A picture of me"
+                  width={128}
+                  height={128}
+                  priority
+                  className="rounded-full bg-cover"
+                />
               </div>
 
               <h1 className="mb-4 text-5xl font-bold text-slate-900 md:text-6xl dark:text-white">Bojidar Yovchev</h1>
