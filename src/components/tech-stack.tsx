@@ -12,7 +12,6 @@ import {
   Layers,
   Palette,
   Server,
-  Shield,
   Smartphone,
   Terminal,
   TestTube,
@@ -31,7 +30,6 @@ const TechStack: React.FC = () => {
         { name: "C#", icon: <Code className="h-5 w-5" /> },
         { name: "Python", icon: <Code className="h-5 w-5" /> },
         { name: "Solidity", icon: <Code className="h-5 w-5" /> },
-        { name: "SQL", icon: <Database className="h-5 w-5" /> },
       ],
     },
     {
@@ -47,6 +45,7 @@ const TechStack: React.FC = () => {
         { name: "AngularJS", icon: <Layers className="h-5 w-5" /> },
         { name: "Vue", icon: <Layers className="h-5 w-5" /> },
         { name: "TailwindCSS", icon: <Palette className="h-5 w-5" /> },
+        { name: "React Native", icon: <Smartphone className="h-5 w-5" /> },
       ],
     },
     {
@@ -66,18 +65,17 @@ const TechStack: React.FC = () => {
         { name: "MongoDB", icon: <Database className="h-5 w-5" /> },
         { name: "Mongoose", icon: <Database className="h-5 w-5" /> },
         { name: "PostgreSQL", icon: <Database className="h-5 w-5" /> },
+        { name: "SQL", icon: <Database className="h-5 w-5" /> },
         { name: "Prisma", icon: <Database className="h-5 w-5" /> },
       ],
     },
     {
-      title: "Mobile & Testing",
-      icon: <Smartphone className="h-6 w-6" />,
+      title: "Testing",
+      icon: <TestTube className="h-6 w-6" />,
       technologies: [
-        { name: "React Native", icon: <Smartphone className="h-5 w-5" /> },
         { name: "Jest", icon: <TestTube className="h-5 w-5" /> },
         { name: "Playwright", icon: <TestTube className="h-5 w-5" /> },
         { name: "msw.js", icon: <TestTube className="h-5 w-5" /> },
-        { name: "NextAuth", icon: <Shield className="h-5 w-5" /> },
       ],
     },
     {
