@@ -3,10 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-staged:eslint:fix": "eslint --fix **/*.{ts,tsx}",
+    "lint-staged:prettier:write": "prettier --write **/*.{ts,tsx,css,md}"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint-staged:eslint:fix"
+    ],
+    "*.{ts,tsx,css,md}": [
+      "npm run lint-staged:prettier:write"
+    ]
   },
   "dependencies": {
     "next": "15.3.3",
@@ -21,6 +32,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^16.1.0",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.12",
