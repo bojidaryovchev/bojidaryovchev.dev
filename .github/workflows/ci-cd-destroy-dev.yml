@@ -31,5 +31,4 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
           npx sst unlock --stage dev
-          npx sst refresh --stage dev
           npx sst remove --stage dev
