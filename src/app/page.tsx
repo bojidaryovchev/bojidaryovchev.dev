@@ -12,55 +12,81 @@ const Home: React.FC = () => {
       company: "IKEA",
       role: "Software Engineer",
       location: "Remote",
-      period: "2023 - 2024",
+      period: "May, 2023 - December, 2024",
       description:
-        "Built a tool to allow users to optimize their range of articles exposed in physical stores based on key performance indicators (KPIs). Used BigQuery, Python and Vue. Did mostly fullstack development with Python and Vue and had the majority of the code ownership.",
-      technologies: ["Python", "Vue", "BigQuery"],
+        "The project I worked on while at IKEA was the so-called ROIT - Range Offer Input Tool - which was a tool to allow users to optimize their range of articles exposed in physical stores based on key performance indicators (KPIs). When I joined the project, I discovered that their codebase did not follow most best practices and they had a lot of technical debt. Since the project itself was not that big, I decided to push myself and rewrite their entire frontend and backend in order to become easier to modify and extend. Before I left the project, everything was written to the best of my ability. Our tech stack involved GCP for cloud services, Docker, Kubernetes and Terraform for IaC, BigQuery, CloudSQL and Redis for database storage, a uvicorn Python server with FastAPI on the backend, Vue on the frontend, Jest for unit tests and Cypress with msw.js for end-to-end tests. We were using Github with Github Actions as our CI/CD pipelines so the tests were being run upon a pull request as a sort of an acceptance criterion. I was initially hired as a frontend developer, however I ended up doing fullstack development, so I had complete ownership of the features I delivered.",
+      technologies: [
+        "GCP",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "BigQuery",
+        "CloudSQL",
+        "SQL",
+        "uvicorn",
+        "Python",
+        "FastAPI",
+        "Vue",
+        "Jest",
+        "Cypress",
+        "msw.js",
+      ],
     },
     {
       company: "LogicFlow",
       role: "Software Engineer",
       location: "Remote",
-      period: "2022 - 2023",
+      period: "February, 2022 - April, 2023",
       description:
-        "LogicFlow is an AI-assisted low-code testing platform, allowing users to easily create tests without having development knowledge. My role involved migrating AngularJS to Angular and implementing new features.",
-      technologies: ["Angular", "AngularJS", "TypeScript"],
+        "While at LogicFlow, I did not actually work on their core product. Instead, I was onboarded on a project of a client of theirs which was basically a banking software written in AngularJS on the frontend and Java on the backend. My role there involved migrating the AngularJS part to Angular v12+ as well as writing unit tests to cover the functionality. We were using BitBucket pipelines for CI/CD so the tests were being executed upon a pull request towards the main branch.",
+      technologies: ["Angular", "AngularJS", "JavaScript", "TypeScript", "Mocha", "Protractor", "Jest"],
     },
     {
       company: "Taxback International",
       role: "Software Engineer",
       location: "Remote",
-      period: "2021 - 2022",
+      period: "February, 2021 - January, 2022",
       description:
-        "Taxback Group is a family of companies providing tools for tax and VAT management. Worked on various in-house solutions using Angular and React Native.",
-      technologies: ["Angular", "React Native", "TypeScript"],
+        "Taxback Group is a family of companies providing tools for tax and VAT management. While there, I worked on an in-house project with Angular where I had to implement response caching on the client side using IndexedDB as well as extend their existing UI and work on bug fixing. Later on we began building a React Native application to basically port that project to mobile (I was the one who suggested React Native and my tech lead liked the idea so we went for it). I am not entirely sure about their overall tech stack as I did not get entirely involved in it.",
+      technologies: ["Angular", "JavaScript", "TypeScript", "React Native"],
     },
     {
       company: "Freelance",
       role: "Software Engineer",
       location: "Remote",
-      period: "2020 - Present",
+      period: "December, 2020 - Present",
       description:
-        "Working as a freelancer on the side whenever I have enough capacity. Mainly using React, Next.js, Angular, Vue, Node.js and NestJS.",
-      technologies: ["React", "Next.js", "Angular", "Vue", "Node.js", "NestJS"],
+        "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud service, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
+      technologies: [
+        "React",
+        "Next.js",
+        "MongoDB Atlas",
+        "SST",
+        "Pulumi",
+        "AWS",
+        "Angular",
+        "Vue",
+        "Node.js",
+        "NestJS",
+      ],
     },
     {
       company: "WeTrack",
-      role: "FrontEnd Developer",
+      role: "FullStack Developer",
       location: "Remote",
-      period: "2017 - 2020",
+      period: "July, 2017 - December, 2020",
       description:
-        "WeTrack is a platform that provides project and risk management solutions. Implemented a substantial part of their UI using Angular. Most of the UI was provided by a designer in Zeplin.",
-      technologies: ["Angular", "JavaScript", "CSS"],
+        "WeTrack is a platform that provides project and risk management solutions. I implemented a substantial part of their user interface using Angular v2+. We had designs for everything which were provided to us in Zeplin, and this meant creating a whole bunch of custom components to properly adhere to said designs, which gave me the opportunity to get my hands really dirty building all of them thus gaining quite some expertise in building components from scratch. Even though I was more involved on the frontend, I also did some backend work for certain features (one of which involved a filtered Gantt chart view) and I also help for the backend refactoring when we decided to do that. Our tech stack consisted of Azure for cloud services, .NET Core with Entity Framework on the backend, SQL Server for our database and Angular v2+ on the frontend, and later on we started using Ionic in order to implement PWA capabilities with proper gestures on mobile.",
+      technologies: ["Angular", "JavaScript", "TypeScript", "SCSS", "C#", ".NET Core", "Entity Framework", "Azure"],
     },
     {
       company: "Oxxy",
       role: "JavaScript Developer",
       location: "On-site - Sofia, Bulgaria",
-      period: "2016 - 2017",
+      period: "June, 2016 - April, 2017",
       description:
-        "Oxxy is a site builder like Wix. Wrote mostly vanilla JavaScript and later started using Angular and Vue to implement e-commerce store functionality.",
-      technologies: ["JavaScript", "Angular", "Vue"],
+        "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on it as I was just starting off and did not have any experience to be able to tackle those.",
+      technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
     },
   ];
 
@@ -87,10 +113,10 @@ const Home: React.FC = () => {
               <p className="mb-6 text-2xl font-semibold text-blue-600 dark:text-blue-400">Software Engineer</p>
               <div className="mx-auto max-w-4xl space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                 <p>
-                  I am a software engineer with 8 years of professional experience. I believe in being self-sufficient
-                  and I always try to stay up-to-date with the technologies I use. I think that as software engineers,
-                  we are there to solve problems, and we should be able to quickly learn and adapt to whatever is
-                  required in order to complete the task.
+                  I am a software engineer with over 9 years of professional experience. I believe in being
+                  self-sufficient and I always try to stay up-to-date with the technologies I use. I think that as
+                  software engineers, we are there to solve problems, and we should be able to quickly learn and adapt
+                  to whatever is required in order to complete the task.
                 </p>
                 <p>
                   I studied software engineering at the Software University in Sofia, Bulgaria during high school
@@ -154,7 +180,7 @@ const Home: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-bold text-slate-900 dark:text-white">Experience</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">My professional journey over the past 8 years</p>
+            <p className="text-lg text-slate-600 dark:text-slate-300">My professional journey over the years</p>
           </div>
 
           <div className="space-y-8">
