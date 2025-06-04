@@ -46,48 +46,384 @@ import { WorkingExperience } from "@/types/working-experience.interface";
 import { Cloud, Code, Cpu, Database, Globe, Server, TestTube } from "lucide-react";
 
 export const technologyByType: Record<TechnologyType, Technology> = {
-  [TechnologyType.JAVASCRIPT]: { name: "JavaScript", icon: <JavaScriptIcon />, years: 8 },
-  [TechnologyType.TYPESCRIPT]: { name: "TypeScript", icon: <TypeScriptIcon />, years: 7 },
-  [TechnologyType.CSHARP]: { name: "C#", icon: <CSharpIcon />, years: 3 },
-  [TechnologyType.PYTHON]: { name: "Python", icon: <PythonIcon />, years: 2 },
-  [TechnologyType.SOLIDITY]: { name: "Solidity", icon: <SolidityIcon />, years: 1 },
-  [TechnologyType.HTML]: { name: "HTML5", icon: <HTMLIcon />, years: 8 },
-  [TechnologyType.CSS]: { name: "CSS3", icon: <CSSIcon />, years: 8 },
-  [TechnologyType.SCSS]: { name: "SCSS", icon: <SassIcon />, years: 7 },
-  [TechnologyType.REACT]: { name: "React", icon: <ReactIcon />, years: 5 },
-  [TechnologyType.NEXTJS]: { name: "Next.js", icon: <NextJSIcon />, years: 4 },
-  [TechnologyType.ANGULAR]: { name: "Angular", icon: <AngularIcon />, years: 7 },
-  [TechnologyType.ANGULARJS]: { name: "AngularJS", icon: <AngularJSIcon />, years: 2 },
-  [TechnologyType.VUE]: { name: "Vue", icon: <VueIcon />, years: 2 },
-  [TechnologyType.TAILWINDCSS]: { name: "TailwindCSS", icon: <TailwindCSSIcon />, years: 3 },
-  [TechnologyType.REACT_NATIVE]: { name: "React Native", icon: <ReactIcon />, years: 1 },
-  [TechnologyType.FIGMA]: { name: "Figma", icon: <FigmaIcon />, years: 3 },
-  [TechnologyType.NODEJS]: { name: "Node.js", icon: <NodeJSIcon />, years: 6 },
-  [TechnologyType.NESTJS]: { name: "NestJS", icon: <NestJSIcon />, years: 4 },
-  [TechnologyType.EXPRESSJS]: { name: "ExpressJS", icon: <ExpressJSIcon />, years: 5 },
-  [TechnologyType.GRAPHQL]: { name: "GraphQL", icon: <GraphQLIcon />, years: 2 },
-  [TechnologyType.DOTNET]: { name: ".NET", icon: <DotnetIcon />, years: 2 },
-  [TechnologyType.DOTNET_CORE]: { name: ".NET Core", icon: <DotNetCoreIcon />, years: 2 },
-  [TechnologyType.FASTAPI]: { name: "FastAPI", icon: <FastAPIIcon />, years: 2 },
-  [TechnologyType.ELASTICSEARCH]: { name: "ElasticSearch", icon: <ElasticSearchIcon />, years: 0.5 },
-  [TechnologyType.ALGOLIA]: { name: "Algolia", icon: <AlgoliaIcon />, years: 0.5 },
-  [TechnologyType.MONGODB]: { name: "MongoDB", icon: <MongoDBIcon />, years: 1.5 },
-  [TechnologyType.MONGOOSE]: { name: "Mongoose", icon: <MongooseIcon />, years: 0.5 },
-  [TechnologyType.POSTGRESQL]: { name: "PostgreSQL", icon: <PostgresIcon />, years: 0.5 },
-  [TechnologyType.SQL]: { name: "SQL", icon: <SQLIcon />, years: 3 },
-  [TechnologyType.PRISMA]: { name: "Prisma", icon: <PrismaIcon />, years: 1 },
-  [TechnologyType.JEST]: { name: "Jest", icon: <JestIcon />, years: 3 },
-  [TechnologyType.PLAYWRIGHT]: { name: "Playwright", icon: <PlaywrightIcon />, years: 2 },
-  [TechnologyType.CYPRESS]: { name: "Cypress", icon: <CypressIcon />, years: 1 },
-  [TechnologyType.MOCHA]: { name: "Mocha", icon: <MochaIcon />, years: 0.5 },
-  [TechnologyType.JASMINE]: { name: "Jasmine", icon: <JasmineIcon />, years: 0.5 },
-  [TechnologyType.PROTRACTOR]: { name: "Protractor", icon: <ProtractorIcon />, years: 0.5 },
-  [TechnologyType.MSWJS]: { name: "msw.js", icon: <MSWJSIcon />, years: 1 },
-  [TechnologyType.AWS]: { name: "AWS", icon: <AWSIcon />, years: 3 },
-  [TechnologyType.DOCKER]: { name: "Docker", icon: <DockerIcon />, years: 3 },
-  [TechnologyType.TERRAFORM]: { name: "Terraform", icon: <TerraformIcon />, years: 1 },
-  [TechnologyType.PULUMI]: { name: "Pulumi", icon: <PulumiIcon />, years: 1 },
-  [TechnologyType.SST]: { name: "SST", icon: <SSTIcon />, years: 1 },
+  [TechnologyType.JAVASCRIPT]: {
+    name: "JavaScript",
+    icon: (
+      <>
+        <JavaScriptIcon />
+      </>
+    ),
+    years: 8,
+  },
+  [TechnologyType.TYPESCRIPT]: {
+    name: "TypeScript",
+    icon: (
+      <>
+        <TypeScriptIcon />
+      </>
+    ),
+    years: 7,
+  },
+  [TechnologyType.CSHARP]: {
+    name: "C#",
+    icon: (
+      <>
+        <CSharpIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.PYTHON]: {
+    name: "Python",
+    icon: (
+      <>
+        <PythonIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.SOLIDITY]: {
+    name: "Solidity",
+    icon: (
+      <>
+        <SolidityIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.HTML]: {
+    name: "HTML5",
+    icon: (
+      <>
+        <HTMLIcon />
+      </>
+    ),
+    years: 8,
+  },
+  [TechnologyType.CSS]: {
+    name: "CSS3",
+    icon: (
+      <>
+        <CSSIcon />
+      </>
+    ),
+    years: 8,
+  },
+  [TechnologyType.SCSS]: {
+    name: "SCSS",
+    icon: (
+      <>
+        <SassIcon />
+      </>
+    ),
+    years: 7,
+  },
+  [TechnologyType.REACT]: {
+    name: "React",
+    icon: (
+      <>
+        <ReactIcon />
+      </>
+    ),
+    years: 5,
+  },
+  [TechnologyType.NEXTJS]: {
+    name: "Next.js",
+    icon: (
+      <>
+        <NextJSIcon />
+      </>
+    ),
+    years: 4,
+  },
+  [TechnologyType.ANGULAR]: {
+    name: "Angular",
+    icon: (
+      <>
+        <AngularIcon />
+      </>
+    ),
+    years: 7,
+  },
+  [TechnologyType.ANGULARJS]: {
+    name: "AngularJS",
+    icon: (
+      <>
+        <AngularJSIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.VUE]: {
+    name: "Vue",
+    icon: (
+      <>
+        <VueIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.TAILWINDCSS]: {
+    name: "TailwindCSS",
+    icon: (
+      <>
+        <TailwindCSSIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.REACT_NATIVE]: {
+    name: "React Native",
+    icon: (
+      <>
+        <ReactIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.FIGMA]: {
+    name: "Figma",
+    icon: (
+      <>
+        <FigmaIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.NODEJS]: {
+    name: "Node.js",
+    icon: (
+      <>
+        <NodeJSIcon />
+      </>
+    ),
+    years: 6,
+  },
+  [TechnologyType.NESTJS]: {
+    name: "NestJS",
+    icon: (
+      <>
+        <NestJSIcon />
+      </>
+    ),
+    years: 4,
+  },
+  [TechnologyType.EXPRESSJS]: {
+    name: "ExpressJS",
+    icon: (
+      <>
+        <ExpressJSIcon />
+      </>
+    ),
+    years: 5,
+  },
+  [TechnologyType.GRAPHQL]: {
+    name: "GraphQL",
+    icon: (
+      <>
+        <GraphQLIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.DOTNET]: {
+    name: ".NET",
+    icon: (
+      <>
+        <DotnetIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.DOTNET_CORE]: {
+    name: ".NET Core",
+    icon: (
+      <>
+        <DotNetCoreIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.FASTAPI]: {
+    name: "FastAPI",
+    icon: (
+      <>
+        <FastAPIIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.ELASTICSEARCH]: {
+    name: "ElasticSearch",
+    icon: (
+      <>
+        <ElasticSearchIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.ALGOLIA]: {
+    name: "Algolia",
+    icon: (
+      <>
+        <AlgoliaIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.MONGODB]: {
+    name: "MongoDB",
+    icon: (
+      <>
+        <MongoDBIcon />
+      </>
+    ),
+    years: 1.5,
+  },
+  [TechnologyType.MONGOOSE]: {
+    name: "Mongoose",
+    icon: (
+      <>
+        <MongooseIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.POSTGRESQL]: {
+    name: "PostgreSQL",
+    icon: (
+      <>
+        <PostgresIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.SQL]: {
+    name: "SQL",
+    icon: (
+      <>
+        <SQLIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.PRISMA]: {
+    name: "Prisma",
+    icon: (
+      <>
+        <PrismaIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.JEST]: {
+    name: "Jest",
+    icon: (
+      <>
+        <JestIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.PLAYWRIGHT]: {
+    name: "Playwright",
+    icon: (
+      <>
+        <PlaywrightIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.CYPRESS]: {
+    name: "Cypress",
+    icon: (
+      <>
+        <CypressIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.MOCHA]: {
+    name: "Mocha",
+    icon: (
+      <>
+        <MochaIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.JASMINE]: {
+    name: "Jasmine",
+    icon: (
+      <>
+        <JasmineIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.PROTRACTOR]: {
+    name: "Protractor",
+    icon: (
+      <>
+        <ProtractorIcon />
+      </>
+    ),
+    years: 0.5,
+  },
+  [TechnologyType.MSWJS]: {
+    name: "msw.js",
+    icon: (
+      <>
+        <MSWJSIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.AWS]: {
+    name: "AWS",
+    icon: (
+      <>
+        <AWSIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.DOCKER]: {
+    name: "Docker",
+    icon: (
+      <>
+        <DockerIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.TERRAFORM]: {
+    name: "Terraform",
+    icon: (
+      <>
+        <TerraformIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.PULUMI]: {
+    name: "Pulumi",
+    icon: (
+      <>
+        <PulumiIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.SST]: {
+    name: "SST",
+    icon: (
+      <>
+        <SSTIcon />
+      </>
+    ),
+    years: 1,
+  },
 };
 
 export const techCategories: TechCategory[] = [

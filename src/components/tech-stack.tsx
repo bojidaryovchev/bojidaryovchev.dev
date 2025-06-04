@@ -24,7 +24,9 @@ const TechStack: React.FC = () => {
                 variant="secondary"
                 className="flex items-center gap-1.5 bg-slate-100 px-3 py-1.5 text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
               >
-                {tech.icon && <span className="text-[1.25rem]">{tech.icon}</span>}
+                {React.Children.count(tech.icon.props.children) > 0 && (
+                  <span className="text-[1.25rem]">{tech.icon}</span>
+                )}
                 {tech.name}
               </Badge>
             ))}
