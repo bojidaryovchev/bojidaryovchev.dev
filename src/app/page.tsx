@@ -1,7 +1,8 @@
 import ExperienceCard from "@/components/experience-card";
+import GithubIcon from "@/components/icons/github-icon";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
-import { Github, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
 
@@ -126,9 +127,9 @@ const Home: React.FC = () => {
 
             {/* Social Links */}
             <div className="flex justify-center gap-4">
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" asChild>
                 <a href="https://github.com/bojidaryovchev" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-5 w-5" />
+                  <GithubIcon />
                   GitHub
                 </a>
               </Button>
@@ -167,7 +168,7 @@ const Home: React.FC = () => {
       {/* Footer */}
       <footer className="bg-slate-900 py-12 text-white">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-slate-400">© 2024 Bojidar Yovchev. Built with Next.js and Tailwind CSS.</p>
+          <p className="text-slate-400">© 2025 Bojidar Yovchev. Built with Next.js and Tailwind CSS.</p>
         </div>
       </footer>
     </div>
