@@ -113,7 +113,7 @@ const Home: React.FC = () => {
               <p className="mb-6 text-2xl font-semibold text-blue-600 dark:text-blue-400">Software Engineer</p>
               <div className="mx-auto max-w-4xl space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                 <p>
-                  I am a software engineer with over 9 years of professional experience. I believe in being
+                  I am a software engineer with over 8 years of professional experience. I believe in being
                   self-sufficient and I always try to stay up-to-date with the technologies I use. I think that as
                   software engineers, we are there to solve problems, and we should be able to quickly learn and adapt
                   to whatever is required in order to complete the task.
