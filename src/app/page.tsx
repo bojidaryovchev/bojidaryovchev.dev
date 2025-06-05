@@ -3,7 +3,7 @@ import GithubIcon from "@/components/icons/github-icon";
 import TechExperience from "@/components/tech-experience";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
-import { experiences, technologyByType } from "@/constants";
+import { experiences, technologyByType, yearsOfExperience } from "@/constants";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
@@ -32,8 +32,8 @@ const Home: React.FC = () => {
               <p className="mb-6 text-2xl font-semibold text-blue-600 dark:text-blue-400">Software Engineer</p>
               <div className="mx-auto max-w-4xl space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                 <p>
-                  I am a software engineer with over 8 years of professional experience. I believe in being
-                  self-sufficient and I always try to stay up-to-date with the technologies I use. I think that as
+                  I am a software engineer with over {yearsOfExperience} years of professional experience. I believe in
+                  being self-sufficient and I always try to stay up-to-date with the technologies I use. I think that as
                   software engineers, we are there to solve problems, and we should be able to quickly learn and adapt
                   to whatever is required in order to complete the task.
                 </p>
@@ -117,7 +117,7 @@ const Home: React.FC = () => {
             <h2 className="mb-4 text-4xl font-bold text-slate-900 dark:text-white">Tech Experience</h2>
             <p className="text-lg text-slate-600 dark:text-slate-300">Experience with individual technologies</p>
           </div>
-          <TechExperience technologies={Object.values(technologyByType)} />
+          <TechExperience technologies={Object.values(technologyByType)} maxYears={yearsOfExperience} />
         </div>
       </section>
 

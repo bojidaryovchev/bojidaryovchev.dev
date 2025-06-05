@@ -1,3 +1,4 @@
+import { yearsOfExperience } from "@/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React, { PropsWithChildren } from "react";
@@ -7,15 +8,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bojidar Yovchev - Software Engineer Portfolio",
-  description:
-    "Software Engineer with over 8 years of professional experience specializing in fullstack web development with React, Next.js, Angular, Vue, and Node.js.",
+  description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development with React, Next.js, Angular, Vue, and Node.js.`,
   keywords:
     "Software Engineer, Full-Stack Developer, React, Next.js, Angular, Angular.js, Vue, Node.js, Express.js, Nest.js, TypeScript, JavaScript, Python, C#, Solidity, .NET Core, SQL, PostgreSQL, MongoDB Atlas",
   authors: [{ name: "Bojidar Yovchev" }],
   openGraph: {
     title: "Bojidar Yovchev - Software Engineer Portfolio",
-    description:
-      "Software Engineer with over 8 years of professional experience specializing in fullstack web development.",
+    description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development.`,
     type: "website",
   },
 };

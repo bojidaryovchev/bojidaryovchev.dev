@@ -45,6 +45,8 @@ import { Technology } from "@/types/technology.interface";
 import { WorkingExperience } from "@/types/working-experience.interface";
 import { Cloud, Code, Cpu, Database, Globe, Server, TestTube } from "lucide-react";
 
+export const yearsOfExperience = 8;
+
 export const technologyByType: Record<TechnologyType, Technology> = {
   [TechnologyType.JAVASCRIPT]: {
     name: "JavaScript",
@@ -278,7 +280,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <MongoDBIcon />
       </>
     ),
-    years: 1.5,
+    years: 2,
   },
   [TechnologyType.MONGOOSE]: {
     name: "Mongoose",
