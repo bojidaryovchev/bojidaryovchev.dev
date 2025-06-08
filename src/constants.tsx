@@ -549,7 +549,7 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "February, 2022 - April, 2023",
     description:
-      "While at LogicFlow, I did not actually work on their core product. Instead, I was onboarded on a project of a client of theirs which was basically a banking software written in AngularJS on the frontend and Java on the backend. My role there involved migrating the AngularJS part to Angular v12+ as well as writing unit tests to cover the functionality. We were using BitBucket pipelines for CI/CD so the tests were being executed upon a pull request towards the main branch.",
+      "While at LogicFlow, I did not actually work on their core product. Instead, I was onboarded onto a project of a client of theirs which was basically a banking software written in AngularJS on the frontend and Java on the backend. My role there involved migrating the AngularJS part to Angular v12+ as well as writing unit tests to cover the functionality. We were using BitBucket pipelines for CI/CD so the tests were being executed upon a pull request towards the main branch.",
     technologies: ["Angular", "AngularJS", "JavaScript", "TypeScript", "Mocha", "Protractor", "Jest"],
   },
   {
@@ -558,7 +558,7 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "February, 2021 - January, 2022",
     description:
-      "Taxback Group is a family of companies providing tools for tax and VAT management. While there, I worked on an in-house project with Angular where I had to implement response caching on the client side using IndexedDB as well as extend their existing UI and work on bug fixing. Later on we began building a React Native application to basically port that project to mobile (I was the one who suggested React Native and my tech lead liked the idea so we went for it). I am not entirely sure about their overall tech stack as I did not get entirely involved in it.",
+      "Taxback Group is a family of companies providing tools for tax and VAT management. While there, I worked on an in-house project with Angular where I had to implement response caching on the client side using IndexedDB as well as extend their existing UI and work on bug fixing. Later on we began building a React Native application to basically port that project to mobile (I was the one who suggested React Native and my team lead liked the idea so we went for it). I am not entirely sure about their overall tech stack as I did not get entirely involved in it.",
     technologies: ["Angular", "JavaScript", "TypeScript", "React Native"],
   },
   {
@@ -567,7 +567,7 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "December, 2020 - Present",
     description:
-      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud service, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
+      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
     technologies: ["React", "Next.js", "MongoDB Atlas", "SST", "Pulumi", "AWS", "Angular", "Vue", "Node.js", "NestJS"],
   },
   {
@@ -576,7 +576,7 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "July, 2017 - December, 2020",
     description:
-      "WeTrack is a platform that provides project and risk management solutions. I implemented a substantial part of their user interface using Angular v2+. We had designs for everything which were provided to us in Zeplin, and this meant creating a whole bunch of custom components to properly adhere to said designs, which gave me the opportunity to get my hands really dirty building all of them thus gaining quite some expertise in building components from scratch. Even though I was more involved on the frontend, I also did some backend work for certain features (one of which involved a filtered Gantt chart view) and I also help for the backend refactoring when we decided to do that. Our tech stack consisted of Azure for cloud services, .NET Core with Entity Framework on the backend, SQL Server for our database and Angular v2+ on the frontend, and later on we started using Ionic in order to implement PWA capabilities with proper gestures on mobile.",
+      "WeTrack is a platform that provides project and risk management solutions. I implemented a substantial part of their user interface using Angular v2+. We had designs for everything which were provided to us in Zeplin, and this meant creating a whole bunch of custom components to properly adhere to said designs, which gave me the opportunity to get my hands really dirty building all of them thus gaining quite some expertise in building components from scratch. Even though I was more involved on the frontend, I also did some backend work for certain features (one of which involved a filtered Gantt chart view) and I also helped for the backend refactoring when we decided to do that. Our tech stack consisted of Azure for cloud services, .NET Core with Entity Framework on the backend, SQL Server for our database and Angular v2+ on the frontend, and later on we started using Ionic in order to implement PWA capabilities with proper gestures on mobile.",
     technologies: ["Angular", "JavaScript", "TypeScript", "SCSS", "C#", ".NET Core", "Entity Framework", "Azure"],
   },
   {
@@ -585,7 +585,7 @@ export const experiences: WorkingExperience[] = [
     location: "On-site - Sofia, Bulgaria",
     period: "June, 2016 - April, 2017",
     description:
-      "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on it as I was just starting off and did not have any experience to be able to tackle those.",
+      "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on those as I was just starting off and did not have any experience to be able to tackle those.",
     technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
   },
 ];
