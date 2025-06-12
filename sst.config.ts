@@ -7,7 +7,7 @@ const isProd = (stage: string) => stage.startsWith("prod");
 export default $config({
   app(input) {
     return {
-      name: "aws-nextjs",
+      name: "bojidaryovchev-dev",
       removal: isProd(input.stage) ? "retain" : "remove",
       home: "aws",
     };
