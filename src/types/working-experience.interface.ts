@@ -4,5 +4,6 @@ export interface WorkingExperience {
   location: string;
   period: string;
   description: string;
+  responsibilities: string[];
   technologies: string[];
 }

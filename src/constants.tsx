@@ -520,12 +520,40 @@ export const techCategories: TechCategory[] = [
 
 export const experiences: WorkingExperience[] = [
   {
+    company: "Freelance",
+    role: "Software Engineer",
+    location: "Remote",
+    period: "December, 2020 - Present",
+    description:
+      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
+    responsibilities: [
+      "Discovery sessions with clients to understand their needs",
+      "Navigating the seamless resolution of issues in an agile environment",
+      "System design to address business requirements in a pragmatic and cost-efficient way",
+      "Deploying cloud infrastructure using popular IaC solutions like Terraform and Pulumi",
+      "Developing UI components using the framework of choice for the project",
+      "Developing backend APIs as per the business needs",
+      "Writing unit and end-to-end tests",
+      "Ensuring best practices are met across the codebase",
+    ],
+    technologies: ["React", "Next.js", "MongoDB Atlas", "SST", "Pulumi", "AWS", "Angular", "Vue", "Node.js", "NestJS"],
+  },
+  {
     company: "IKEA",
     role: "Software Engineer",
     location: "Remote",
     period: "May, 2023 - December, 2024",
     description:
-      "The project I worked on while at IKEA was the so-called ROIT - Range Offer Input Tool - which was a tool to allow users to optimize their range of articles exposed in physical stores based on key performance indicators (KPIs). When I joined the project, I discovered that their codebase did not follow most best practices and they had a lot of technical debt. Since the project itself was not that big, I decided to push myself and rewrite their entire frontend and backend in order to become easier to modify and extend. Before I left the project, everything was written to the best of my ability. Our tech stack involved GCP for cloud services, Docker, Kubernetes and Terraform for IaC, BigQuery, CloudSQL and Redis for database storage, a uvicorn Python server with FastAPI on the backend, Vue on the frontend, Jest for unit tests and Cypress with msw.js for end-to-end tests. We were using Github with Github Actions as our CI/CD pipelines so the tests were being run upon a pull request as a sort of an acceptance criterion. I was initially hired as a frontend developer, however I ended up doing fullstack development, so I had complete ownership of the features I delivered.",
+      "The project I worked on while at IKEA was the so-called ROIT - Range Offer Input Tool - which was a tool to allow users to optimize their range of articles exposed in physical stores based on key performance indicators (KPIs). When I joined the project, I discovered that their codebase did not follow most best practices and they had a lot of technical debt. Since the project itself was not that big, I decided to push myself and rewrite their entire frontend and backend in order to become easier to modify and extend. Before I left the project, everything was written to the best of my ability. Our tech stack involved GCP for cloud services, Docker, Kubernetes and Terraform for IaC, BigQuery, CloudSQL and Redis for database storage, a uvicorn Python server with FastAPI on the backend, Vue on the frontend, Jest for unit tests and Cypress with msw.js for end-to-end tests. We were using GitHub with GitHub Actions as our CI/CD pipelines so the tests were being run upon a pull request as a sort of an acceptance criterion. I was initially hired as a frontend developer, however I ended up doing fullstack development, so I had complete ownership of the features I delivered.",
+    responsibilities: [
+      "Collaborating with Product Owner, UI, Data and engineering to brainstorm solutions end-to-end",
+      "Ensuring best practices across our codebase",
+      "Supporting and extending the frontend and backend sides",
+      "Occasionally providing support on the infra-side",
+      "Helping fellow teammates",
+      "Reviewing pull requests",
+      "Writing unit and end-to-end tests",
+    ],
     technologies: [
       "GCP",
       "Docker",
@@ -550,6 +578,13 @@ export const experiences: WorkingExperience[] = [
     period: "February, 2022 - April, 2023",
     description:
       "While at LogicFlow, I did not actually work on their core product. Instead, I was onboarded onto a project of a client of theirs which was basically a banking software written in AngularJS on the frontend and Java on the backend. My role there involved migrating the AngularJS part to Angular v12+ as well as writing unit tests to cover the functionality. We were using BitBucket pipelines for CI/CD so the tests were being executed upon a pull request towards the main branch.",
+    responsibilities: [
+      "Migrating bank software from angular.js to Angular v2+",
+      "Communicating with developers from the client's team to ensure business requirements are met",
+      "Reviewing pull requests",
+      "Helping fellow teammates",
+      "Migrating and writing unit and end-to-end tests",
+    ],
     technologies: ["Angular", "AngularJS", "JavaScript", "TypeScript", "Mocha", "Protractor", "Jest"],
   },
   {
@@ -559,16 +594,15 @@ export const experiences: WorkingExperience[] = [
     period: "February, 2021 - January, 2022",
     description:
       "Taxback Group is a family of companies providing tools for tax and VAT management. While there, I worked on an in-house project with Angular where I had to implement response caching on the client side using IndexedDB as well as extend their existing UI and work on bug fixing. Later on we began building a React Native application to basically port that project to mobile (I was the one who suggested React Native and my team lead liked the idea so we went for it). I am not entirely sure about their overall tech stack as I did not get entirely involved in it.",
+    responsibilities: [
+      "Communicating with Product Owner and UI team to address business requirements",
+      "Working with tech lead on architectural changes and system design",
+      "Working with QA to address issues and inconsistencies",
+      "Ensuring best practices across my domain",
+      "Mentoring fellow teammates",
+      "Reviewing pull requests",
+    ],
     technologies: ["Angular", "JavaScript", "TypeScript", "React Native"],
-  },
-  {
-    company: "Freelance",
-    role: "Software Engineer",
-    location: "Remote",
-    period: "December, 2020 - Present",
-    description:
-      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
-    technologies: ["React", "Next.js", "MongoDB Atlas", "SST", "Pulumi", "AWS", "Angular", "Vue", "Node.js", "NestJS"],
   },
   {
     company: "WeTrack",
@@ -577,6 +611,15 @@ export const experiences: WorkingExperience[] = [
     period: "July, 2017 - December, 2020",
     description:
       "WeTrack is a platform that provides project and risk management solutions. I implemented a substantial part of their user interface using Angular v2+. We had designs for everything which were provided to us in Zeplin, and this meant creating a whole bunch of custom components to properly adhere to said designs, which gave me the opportunity to get my hands really dirty building all of them thus gaining quite some expertise in building components from scratch. Even though I was more involved on the frontend, I also did some backend work for certain features (one of which involved a filtered Gantt chart view) and I also helped for the backend refactoring when we decided to do that. Our tech stack consisted of Azure for cloud services, .NET Core with Entity Framework on the backend, SQL Server for our database and Angular v2+ on the frontend, and later on we started using Ionic in order to implement PWA capabilities with proper gestures on mobile.",
+    responsibilities: [
+      "Communicating with our CTO (who was also like a Product Owner and a UI-person) to ensure business requirements are seamlessly met at the technical level",
+      "Developing custom components based on Zeplin designs using Angular v2+",
+      "Helping to refactor the backend architecture",
+      "Extending and developing features on the backend using .NET Core and Entity Framework",
+      "Mentoring junior developers and helping them with issues",
+      "Reviewing pull requests",
+      "Helping teammates with issues concerning my expertise",
+    ],
     technologies: ["Angular", "JavaScript", "TypeScript", "SCSS", "C#", ".NET Core", "Entity Framework", "Azure"],
   },
   {
@@ -585,7 +628,12 @@ export const experiences: WorkingExperience[] = [
     location: "On-site - Sofia, Bulgaria",
     period: "June, 2016 - April, 2017",
     description:
-      "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on those as I was just starting off and did not have any experience to be able to tackle those.",
+      "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on those as I was just starting off and did not have any experience to be able to tackle them.",
+    responsibilities: [
+      "Implementing various features like the ability to rotate widgets and scale them proportionally for mobile devices using pure JavaScript",
+      "Implementing e-commerce store creation capabilities on the frontend using Angular v2",
+      "Collaborating with team lead and fellow teammates on resolving bugs and improving the codebase",
+    ],
     technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
   },
 ];

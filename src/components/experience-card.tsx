@@ -10,6 +10,7 @@ interface ExperienceCardProps {
   period: string;
   description: string;
   technologies: string[];
+  responsibilities: string[];
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
@@ -19,6 +20,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   period,
   description,
   technologies,
+  responsibilities,
 }) => {
   return (
     <Card className="border-l-4 border-l-blue-500 transition-shadow duration-300 hover:shadow-lg">
@@ -43,6 +45,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
       <CardContent>
         <p className="mb-4 leading-relaxed text-slate-700 dark:text-slate-300">{description}</p>
+
+        <strong>Key responsibilities:</strong>
+
+        <ul className="mt-2 mb-8 list-disc space-y-2 pl-8">
+          {responsibilities.map((responsibility) => (
+            <li key={responsibility}>{responsibility}</li>
+          ))}
+        </ul>
 
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, index) => (
