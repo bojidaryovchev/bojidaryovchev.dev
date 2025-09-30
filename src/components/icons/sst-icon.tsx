@@ -3,7 +3,7 @@ import React from "react";
 const SSTIcon: React.FC = () => {
   return (
     <>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.47 80.47" width="1em" height="rem">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.47 80.47" width="1em" height="1em">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

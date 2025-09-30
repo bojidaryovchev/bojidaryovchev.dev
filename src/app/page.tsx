@@ -1,5 +1,6 @@
 import ExperienceCard from "@/components/experience-card";
 import GithubIcon from "@/components/icons/github-icon";
+import PDFExport from "@/components/pdf-export";
 import TechExperience from "@/components/tech-experience";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
@@ -78,6 +79,7 @@ const Home: React.FC = () => {
                   GitHub
                 </a>
               </Button>
+              <PDFExport />
             </div>
           </div>
         </div>
