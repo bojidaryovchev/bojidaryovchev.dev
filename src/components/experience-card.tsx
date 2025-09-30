@@ -48,7 +48,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
         <strong>Key responsibilities:</strong>
 
-        <ul className="mt-2 mb-8 list-disc space-y-2 pl-8">
+        <ul className="mt-2 mb-8 list-disc space-y-2 pl-8 leading-relaxed text-slate-700 dark:text-slate-300">
           {responsibilities.map((responsibility) => (
             <li key={responsibility}>{responsibility}</li>
           ))}
