@@ -53,7 +53,7 @@ const OpengraphImage = () => {
           maxWidth: 900,
         }}
       >
-        Fullstack web development with React, Next.js, Angular, Vue &amp; Node.js
+        Fullstack web development with AWS, Pulumi, PostgreSQL, React, Next.js &amp; Node.js
       </div>
       <div
         style={{
