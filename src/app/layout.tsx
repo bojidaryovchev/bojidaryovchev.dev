@@ -1,4 +1,4 @@
-import { yearsOfExperience } from "@/constants";
+import { siteConfig } from "@/site-config";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React, { PropsWithChildren } from "react";
@@ -7,15 +7,42 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bojidar Yovchev - Software Engineer Portfolio",
-  description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development with React, Next.js, Angular, Vue, and Node.js.`,
-  keywords:
-    "Software Engineer, Full-Stack Developer, React, Next.js, Angular, Angular.js, Vue, Node.js, Express.js, Nest.js, TypeScript, JavaScript, Python, C#, Solidity, .NET Core, SQL, PostgreSQL, MongoDB Atlas",
-  authors: [{ name: "Bojidar Yovchev" }],
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s — ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Bojidar Yovchev - Software Engineer Portfolio",
-    description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development.`,
     type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.title,
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 

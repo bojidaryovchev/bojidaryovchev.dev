@@ -8,6 +8,7 @@ import CypressIcon from "@/components/icons/cypress-icon";
 import DockerIcon from "@/components/icons/docker-icon";
 import DotnetIcon from "@/components/icons/dotnet-icon";
 import DotNetCoreIcon from "@/components/icons/dotnetcore-icon";
+import DrizzleIcon from "@/components/icons/drizzle-icon";
 import ElasticSearchIcon from "@/components/icons/elasticsearch-icon";
 import ExpressJSIcon from "@/components/icons/expressjs-icon";
 import FastAPIIcon from "@/components/icons/fastapi-icon";
@@ -45,7 +46,7 @@ import { Technology } from "@/types/technology.interface";
 import { WorkingExperience } from "@/types/working-experience.interface";
 import { Cloud, Code, Cpu, Database, Globe, Server, TestTube } from "lucide-react";
 
-export const yearsOfExperience = 8;
+export const yearsOfExperience = 10;
 
 export const technologyByType: Record<TechnologyType, Technology> = {
   [TechnologyType.JAVASCRIPT]: {
@@ -55,7 +56,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <JavaScriptIcon />
       </>
     ),
-    years: 8,
+    years: 10,
   },
   [TechnologyType.TYPESCRIPT]: {
     name: "TypeScript",
@@ -64,7 +65,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <TypeScriptIcon />
       </>
     ),
-    years: 7,
+    years: 9,
   },
   [TechnologyType.CSHARP]: {
     name: "C#",
@@ -100,7 +101,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <HTMLIcon />
       </>
     ),
-    years: 8,
+    years: 10,
   },
   [TechnologyType.CSS]: {
     name: "CSS3",
@@ -109,7 +110,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <CSSIcon />
       </>
     ),
-    years: 8,
+    years: 10,
   },
   [TechnologyType.SCSS]: {
     name: "SCSS",
@@ -127,7 +128,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <ReactIcon />
       </>
     ),
-    years: 5,
+    years: 7,
   },
   [TechnologyType.NEXTJS]: {
     name: "Next.js",
@@ -136,7 +137,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <NextJSIcon />
       </>
     ),
-    years: 4,
+    years: 6,
   },
   [TechnologyType.ANGULAR]: {
     name: "Angular",
@@ -172,7 +173,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <TailwindCSSIcon />
       </>
     ),
-    years: 3,
+    years: 5,
   },
   [TechnologyType.REACT_NATIVE]: {
     name: "React Native",
@@ -190,7 +191,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <FigmaIcon />
       </>
     ),
-    years: 3,
+    years: 5,
   },
   [TechnologyType.NODEJS]: {
     name: "Node.js",
@@ -199,7 +200,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <NodeJSIcon />
       </>
     ),
-    years: 6,
+    years: 8,
   },
   [TechnologyType.NESTJS]: {
     name: "NestJS",
@@ -271,7 +272,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <AlgoliaIcon />
       </>
     ),
-    years: 0.5,
+    years: 1,
   },
   [TechnologyType.MONGODB]: {
     name: "MongoDB",
@@ -298,7 +299,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <PostgresIcon />
       </>
     ),
-    years: 0.5,
+    years: 1,
   },
   [TechnologyType.SQL]: {
     name: "SQL",
@@ -307,7 +308,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
         <SQLIcon />
       </>
     ),
-    years: 3,
+    years: 5,
   },
   [TechnologyType.PRISMA]: {
     name: "Prisma",
@@ -426,6 +427,15 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     ),
     years: 1,
   },
+  [TechnologyType.DRIZZLE]: {
+    name: "Drizzle",
+    icon: (
+      <>
+        <DrizzleIcon />
+      </>
+    ),
+    years: 1,
+  },
 };
 
 export const techCategories: TechCategory[] = [
@@ -476,11 +486,12 @@ export const techCategories: TechCategory[] = [
     title: "Database & ORM",
     icon: <Database className="h-6 w-6" />,
     technologies: [
+      technologyByType[TechnologyType.POSTGRESQL],
+      technologyByType[TechnologyType.DRIZZLE],
+      technologyByType[TechnologyType.PRISMA],
       technologyByType[TechnologyType.MONGODB],
       technologyByType[TechnologyType.MONGOOSE],
-      technologyByType[TechnologyType.POSTGRESQL],
       technologyByType[TechnologyType.SQL],
-      technologyByType[TechnologyType.PRISMA],
     ],
   },
   {
@@ -490,10 +501,10 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.JEST],
       technologyByType[TechnologyType.PLAYWRIGHT],
       technologyByType[TechnologyType.CYPRESS],
+      technologyByType[TechnologyType.MSWJS],
       technologyByType[TechnologyType.MOCHA],
       technologyByType[TechnologyType.JASMINE],
       technologyByType[TechnologyType.PROTRACTOR],
-      technologyByType[TechnologyType.MSWJS],
     ],
   },
   {
@@ -501,10 +512,10 @@ export const techCategories: TechCategory[] = [
     icon: <Cloud className="h-6 w-6" />,
     technologies: [
       technologyByType[TechnologyType.AWS],
-      technologyByType[TechnologyType.DOCKER],
-      technologyByType[TechnologyType.TERRAFORM],
       technologyByType[TechnologyType.PULUMI],
+      technologyByType[TechnologyType.TERRAFORM],
       technologyByType[TechnologyType.SST],
+      technologyByType[TechnologyType.DOCKER],
     ],
   },
   {
@@ -514,6 +525,8 @@ export const techCategories: TechCategory[] = [
       { name: "Design Patterns", icon: <></>, years: Number.POSITIVE_INFINITY },
       { name: "Data Structures", icon: <></>, years: Number.POSITIVE_INFINITY },
       { name: "Algorithms", icon: <></>, years: Number.POSITIVE_INFINITY },
+      { name: "System Design & Architecture", icon: <></>, years: Number.POSITIVE_INFINITY },
+      { name: "Cloud Infrastructure", icon: <></>, years: Number.POSITIVE_INFINITY },
     ],
   },
 ];
@@ -525,10 +538,9 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "December, 2020 - Present",
     description:
-      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, MongoDB Atlas, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
+      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, PostgreSQL, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
     responsibilities: [
       "Discovery sessions with clients to understand their needs",
-      "Navigating the seamless resolution of issues in an agile environment",
       "System design to address business requirements in a pragmatic and cost-efficient way",
       "Deploying cloud infrastructure using popular IaC solutions like Terraform and Pulumi",
       "Developing UI components using the framework of choice for the project",
@@ -536,7 +548,19 @@ export const experiences: WorkingExperience[] = [
       "Writing unit and end-to-end tests",
       "Ensuring best practices are met across the codebase",
     ],
-    technologies: ["React", "Next.js", "MongoDB Atlas", "SST", "Pulumi", "AWS", "Angular", "Vue", "Node.js", "NestJS"],
+    technologies: [
+      "AWS",
+      "Pulumi",
+      "SST",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "NestJS",
+      "MongoDB Atlas",
+      "Angular",
+      "Vue",
+    ],
   },
   {
     company: "IKEA",

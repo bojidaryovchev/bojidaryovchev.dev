@@ -41,4 +41,5 @@ export enum TechnologyType {
   TERRAFORM = "Terraform",
   PULUMI = "Pulumi",
   SST = "SST",
+  DRIZZLE = "Drizzle",
 }
