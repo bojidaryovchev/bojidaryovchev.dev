@@ -18,6 +18,7 @@ import HTMLIcon from "@/components/icons/html-icon";
 import JasmineIcon from "@/components/icons/jasmine-icon";
 import JavaScriptIcon from "@/components/icons/javascript-icon";
 import JestIcon from "@/components/icons/jest-icon";
+import KubernetesIcon from "@/components/icons/kubernetes-icon";
 import MochaIcon from "@/components/icons/mocha-icon";
 import MongoDBIcon from "@/components/icons/mongodb-icon";
 import MongooseIcon from "@/components/icons/mongoose-icon";
@@ -436,6 +437,15 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     ),
     years: 1,
   },
+  [TechnologyType.KUBERNETES]: {
+    name: "Kubernetes",
+    icon: (
+      <>
+        <KubernetesIcon />
+      </>
+    ),
+    years: 2,
+  },
 };
 
 export const techCategories: TechCategory[] = [
@@ -516,6 +526,7 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.TERRAFORM],
       technologyByType[TechnologyType.SST],
       technologyByType[TechnologyType.DOCKER],
+      technologyByType[TechnologyType.KUBERNETES],
     ],
   },
   {

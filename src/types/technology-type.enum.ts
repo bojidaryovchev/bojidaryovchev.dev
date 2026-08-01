@@ -42,4 +42,5 @@ export enum TechnologyType {
   PULUMI = "Pulumi",
   SST = "SST",
   DRIZZLE = "Drizzle",
+  KUBERNETES = "Kubernetes",
 }
