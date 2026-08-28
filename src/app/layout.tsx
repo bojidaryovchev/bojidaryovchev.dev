@@ -17,6 +17,27 @@ export const metadata: Metadata = {
     description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development.`,
     type: "website",
   },
+  // The whole site is kept out of search indexes on purpose. Inherited by every
+  // route unless a page overrides it; mirrored as an X-Robots-Tag header in
+  // next.config.ts so non-HTML responses are covered too.
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noarchive: true,
+      nosnippet: true,
+      noimageindex: true,
+      "max-image-preview": "none",
+      "max-snippet": 0,
+      "max-video-preview": 0,
+    },
+  },
 };
 
 const RootLayout: React.FC<PropsWithChildren> = ({ children }) => {
