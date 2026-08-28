@@ -1,11 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { techCategories } from "@/constants";
+import type { TechCategory } from "@/types/tech-category.interface";
 import React from "react";
 
-const TechStack: React.FC = () => {
+interface Props {
+  categories?: TechCategory[];
+}
+
+const TechStack: React.FC<Props> = ({ categories = techCategories }) => {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {techCategories.map((category, index) => (
+      {categories.map((category, index) => (
         <div
           key={index}
           className="rounded-xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-700 dark:bg-slate-800"

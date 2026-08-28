@@ -1,6 +1,7 @@
 import ExperienceCard from "@/components/experience-card";
 import GithubIcon from "@/components/icons/github-icon";
 import PDFExport from "@/components/pdf-export";
+import StructuredData from "@/components/structured-data";
 import TechExperience from "@/components/tech-experience";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import type React from "react";
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <StructuredData />
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b bg-white dark:bg-slate-900">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10" />
@@ -21,7 +23,7 @@ const Home: React.FC = () => {
               <div className="mb-6 flex justify-center">
                 <Image
                   src="/me.png"
-                  alt="A picture of me"
+                  alt="Bojidar Yovchev, Software Engineer"
                   width={128}
                   height={128}
                   priority
@@ -41,8 +43,8 @@ const Home: React.FC = () => {
                 <p>
                   I studied software engineering at the Software University in Sofia, Bulgaria during high school
                   (remotely) and landed my first job at Oxxy just 2 weeks after graduation. My main area of expertise is
-                  fullstack web development with Angular, React, Next.js, Vue and Node.js. I&apos;ve also used React
-                  Native and a bit of Ionic. Throughout the years I&apos;ve had the pleasure to work on various
+                  fullstack web development with AWS, Pulumi, React, Next.js, Node.js and PostgreSQL, and I&apos;ve also
+                  used React Native to build mobile. Throughout the years I&apos;ve had the pleasure to work on various
                   projects, getting exposed to a wide variety of technologies which I believe is really beneficial as it
                   expands one&apos;s grasp.
                 </p>
@@ -126,7 +128,9 @@ const Home: React.FC = () => {
       {/* Footer */}
       <footer className="bg-slate-900 py-12 text-white">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-slate-400">© 2025 Bojidar Yovchev. Built with Next.js and Tailwind CSS.</p>
+          <p className="text-slate-400">
+            © {new Date().getFullYear()} Bojidar Yovchev. Built with Next.js and Tailwind CSS.
+          </p>
         </div>
       </footer>
     </div>
