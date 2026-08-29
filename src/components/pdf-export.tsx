@@ -49,10 +49,6 @@ const PDFContent = forwardRef<HTMLDivElement>((props, ref) => (
               <span>Plovdiv, Bulgaria</span>
             </div>
             <div className="flex items-center gap-2">
-              <span>📞</span>
-              <span>+359896013900</span>
-            </div>
-            <div className="flex items-center gap-2">
               <span>✉️</span>
               <span>bojidaryovchev1@gmail.com</span>
             </div>

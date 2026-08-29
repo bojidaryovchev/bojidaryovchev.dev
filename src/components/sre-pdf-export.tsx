@@ -20,9 +20,7 @@ const SREPDFContent = forwardRef<HTMLDivElement>((props, ref) => (
         <h1>Bojidar Yovchev</h1>
         <p className="sre-pdf-role">{sreTitle}</p>
         <p className="sre-pdf-tagline">{sreTagline}</p>
-        <p className="sre-pdf-contact">
-          Plovdiv, Bulgaria · +359 896 013 900 · bojidaryovchev1@gmail.com · github.com/bojidaryovchev
-        </p>
+        <p className="sre-pdf-contact">Plovdiv, Bulgaria · bojidaryovchev1@gmail.com · github.com/bojidaryovchev</p>
       </div>
     </div>
 

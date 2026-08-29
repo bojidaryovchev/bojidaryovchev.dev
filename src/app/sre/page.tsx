@@ -5,7 +5,7 @@ import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/site-config";
 import { sreExperiences, sreSummary, sreTagline, sreTechCategories, sreTitle } from "@/sre-constants";
-import { ArrowLeft, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowLeft, Mail, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,13 +62,6 @@ const SREPage: React.FC = () => {
                 <MapPin className="h-5 w-5" />
                 <span>Plovdiv, Bulgaria</span>
               </div>
-              <a
-                href="tel:+359896013900"
-                className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-              >
-                <Phone className="h-5 w-5" />
-                <span>+359896013900</span>
-              </a>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"

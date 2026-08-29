@@ -6,7 +6,7 @@ import TechExperience from "@/components/tech-experience";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
 import { experiences, technologyByType, yearsOfExperience } from "@/constants";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
 
@@ -57,13 +57,6 @@ const Home: React.FC = () => {
                 <MapPin className="h-5 w-5" />
                 <span>Plovdiv, Bulgaria</span>
               </div>
-              <a
-                href="tel:+359896013900"
-                className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-              >
-                <Phone className="h-5 w-5" />
-                <span>+359896013900</span>
-              </a>
               <a
                 href="mailto:bojidaryovchev1@gmail.com"
                 className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
