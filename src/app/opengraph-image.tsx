@@ -24,7 +24,7 @@ const OpengraphImage = () => {
       <div
         style={{
           display: "flex",
-          fontSize: 32,
+          fontSize: 28,
           fontWeight: 600,
           color: "#60a5fa",
           letterSpacing: "0.05em",
@@ -53,7 +53,7 @@ const OpengraphImage = () => {
           maxWidth: 900,
         }}
       >
-        Fullstack web development with AWS, Pulumi, PostgreSQL, React, Next.js &amp; Node.js
+        {siteConfig.focusAreas.join(" · ")}
       </div>
       <div
         style={{

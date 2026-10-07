@@ -1,33 +1,26 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { WorkingExperience } from "@/types/working-experience.interface";
 import { Calendar, MapPin } from "lucide-react";
 import type React from "react";
 
-interface ExperienceCardProps {
-  company: string;
-  role: string;
-  location: string;
-  period: string;
-  description: string;
-  technologies: string[];
-  responsibilities: string[];
-}
-
-const ExperienceCard: React.FC<ExperienceCardProps> = ({
+const ExperienceCard: React.FC<WorkingExperience> = ({
   company,
   role,
   location,
   period,
   description,
+  highlights,
   technologies,
-  responsibilities,
 }) => {
   return (
     <Card className="border-l-4 border-l-blue-500 transition-shadow duration-300 hover:shadow-lg">
       <CardHeader>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">{company}</CardTitle>
+            <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
+              <h3>{company}</h3>
+            </CardTitle>
             <CardDescription className="text-lg font-medium text-blue-600 dark:text-blue-400">{role}</CardDescription>
           </div>
           <div className="flex flex-col gap-2 sm:items-end">
@@ -46,11 +39,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <CardContent>
         <p className="mb-4 leading-relaxed text-slate-700 dark:text-slate-300">{description}</p>
 
-        <strong>Key responsibilities:</strong>
-
-        <ul className="mt-2 mb-8 list-disc space-y-2 pl-8 leading-relaxed text-slate-700 dark:text-slate-300">
-          {responsibilities.map((responsibility) => (
-            <li key={responsibility}>{responsibility}</li>
+        <ul className="mb-6 list-disc space-y-2 pl-6 leading-relaxed text-slate-700 dark:text-slate-300">
+          {highlights.map((highlight) => (
+            <li key={highlight}>{highlight}</li>
           ))}
         </ul>
 

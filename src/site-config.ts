@@ -1,15 +1,37 @@
 import { yearsOfExperience } from "@/constants";
 
+/** Subject areas, fed into the meta keywords and Person.knowsAbout. */
+const topics = [
+  "Software Architecture",
+  "System Design",
+  "Distributed Systems",
+  "Cloud Infrastructure",
+  "AWS",
+  "GCP",
+  "Terraform",
+  "Kubernetes",
+  "Node.js",
+  "NestJS",
+  "Python",
+  "PostgreSQL",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Angular",
+];
+
 /**
  * Centralized site metadata. Used by the App Router metadata, sitemap, robots,
- * manifest, OpenGraph image and JSON-LD structured data so everything stays in sync.
+ * manifest, OpenGraph image, JSON-LD structured data and the printed CV so everything stays in sync.
  */
 export const siteConfig = {
   name: "Bojidar Yovchev",
-  jobTitle: "Software Engineer",
-  title: "Bojidar Yovchev — Software Engineer Portfolio",
+  jobTitle: "Software Architect & Senior Full-Stack Engineer",
+  title: "Bojidar Yovchev — Software Architect & Senior Full-Stack Engineer",
+  /** Shown under the job title; mirrors the order of the skill hierarchy. */
+  focusAreas: ["System Design", "Cloud Infrastructure", "Backend & Data", "Frontend"],
   /** Used as the OpenGraph/social tagline and meta description. */
-  description: `Software Engineer with over ${yearsOfExperience} years of professional experience specializing in fullstack web development with AWS, Pulumi, React, Next.js, Node.js and PostgreSQL.`,
+  description: `Hands-on software architect and senior full-stack engineer with ${yearsOfExperience}+ years designing and building web platforms, from system design and cloud to the UI.`,
   /** Production origin. No trailing slash. */
   url: "https://bojidaryovchev.dev",
   locale: "en_US",
@@ -22,28 +44,8 @@ export const siteConfig = {
   profiles: {
     github: "https://github.com/bojidaryovchev",
   },
-  keywords: [
-    "Bojidar Yovchev",
-    "Software Engineer",
-    "Full-Stack Developer",
-    "React",
-    "Next.js",
-    "Angular",
-    "AngularJS",
-    "Vue",
-    "Node.js",
-    "Express.js",
-    "Nest.js",
-    "TypeScript",
-    "JavaScript",
-    "Python",
-    "C#",
-    "Solidity",
-    ".NET Core",
-    "SQL",
-    "PostgreSQL",
-    "MongoDB Atlas",
-  ],
+  topics,
+  keywords: ["Bojidar Yovchev", "Software Architect", "Senior Full-Stack Engineer", ...topics],
 } as const;
 
 export const sameAs: string[] = Object.values(siteConfig.profiles);

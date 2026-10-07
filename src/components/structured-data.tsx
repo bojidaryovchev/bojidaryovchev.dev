@@ -1,16 +1,15 @@
-import { experiences } from "@/constants";
+import { education } from "@/constants";
 import { sameAs, siteConfig } from "@/site-config";
 import type React from "react";
 
 /**
  * Person + WebSite JSON-LD structured data. Helps search engines build a
  * Knowledge Panel entity and improves eligibility for AI / rich results.
+ *
+ * Former employers are deliberately not listed: schema.org's `worksFor` means a
+ * current employer, and the only ongoing work in the CV is freelance.
  */
 const StructuredData: React.FC = () => {
-  const employers = Array.from(new Set(experiences.map((experience) => experience.company))).filter(
-    (company) => company.toLowerCase() !== "freelance",
-  );
-
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -25,8 +24,8 @@ const StructuredData: React.FC = () => {
       addressLocality: siteConfig.location.city,
       addressCountry: siteConfig.location.country,
     },
-    worksFor: employers.map((name) => ({ "@type": "Organization", name })),
-    knowsAbout: siteConfig.keywords.filter((keyword) => keyword !== siteConfig.name),
+    alumniOf: education.map(({ institution }) => ({ "@type": "EducationalOrganization", name: institution })),
+    knowsAbout: siteConfig.topics,
     sameAs,
   };
 

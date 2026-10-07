@@ -12,7 +12,8 @@ const manifest = (): MetadataRoute.Manifest => {
     theme_color: "#2563eb",
     icons: [
       {
-        src: "/icon.png",
+        // Served by src/app/icon.tsx; there is no static /icon.png.
+        src: "/icon",
         sizes: "512x512",
         type: "image/png",
       },

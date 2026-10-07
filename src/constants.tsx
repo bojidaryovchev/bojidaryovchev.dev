@@ -2,6 +2,7 @@ import AlgoliaIcon from "@/components/icons/algolia-icon";
 import AngularIcon from "@/components/icons/angular-icon";
 import AngularJSIcon from "@/components/icons/angularjs-icon";
 import AWSIcon from "@/components/icons/aws-icon";
+import BigQueryIcon from "@/components/icons/bigquery-icon";
 import CSharpIcon from "@/components/icons/csharp-icon";
 import CSSIcon from "@/components/icons/css-icon";
 import CypressIcon from "@/components/icons/cypress-icon";
@@ -13,6 +14,8 @@ import ElasticSearchIcon from "@/components/icons/elasticsearch-icon";
 import ExpressJSIcon from "@/components/icons/expressjs-icon";
 import FastAPIIcon from "@/components/icons/fastapi-icon";
 import FigmaIcon from "@/components/icons/figma-icon";
+import GitHubActionsIcon from "@/components/icons/githubactions-icon";
+import GoogleCloudIcon from "@/components/icons/googlecloud-icon";
 import GraphQLIcon from "@/components/icons/graphql-icon";
 import HTMLIcon from "@/components/icons/html-icon";
 import JasmineIcon from "@/components/icons/jasmine-icon";
@@ -33,6 +36,7 @@ import ProtractorIcon from "@/components/icons/protractor-icon";
 import PulumiIcon from "@/components/icons/pulumi-icon";
 import PythonIcon from "@/components/icons/python-icon";
 import ReactIcon from "@/components/icons/react-icon";
+import RedisIcon from "@/components/icons/redis-icon";
 import SassIcon from "@/components/icons/sass-icon";
 import SolidityIcon from "@/components/icons/solidity-icon";
 import SQLIcon from "@/components/icons/sql-icon";
@@ -41,13 +45,22 @@ import TailwindCSSIcon from "@/components/icons/tailwindcss-icon";
 import TerraformIcon from "@/components/icons/terraform-icon";
 import TypeScriptIcon from "@/components/icons/typescript-icon";
 import VueIcon from "@/components/icons/vue-icon";
+import { CaseStudy } from "@/types/case-study.interface";
+import { Education } from "@/types/education.interface";
+import { Skill } from "@/types/skill.interface";
 import { TechCategory } from "@/types/tech-category.interface";
 import { TechnologyType } from "@/types/technology-type.enum";
 import { Technology } from "@/types/technology.interface";
 import { WorkingExperience } from "@/types/working-experience.interface";
-import { Cloud, Code, Cpu, Database, Globe, Server, TestTube } from "lucide-react";
+import { Cloud, GitPullRequest, Globe, Network, Server } from "lucide-react";
 
 export const yearsOfExperience = 10;
+
+/** Opening profile: rendered in the hero and as the Summary of the printed CV. */
+export const profileSummary: string[] = [
+  `Software architect and senior full-stack engineer with ${yearsOfExperience}+ years of professional experience designing and building web platforms end to end. I take product and business requirements and work out the system behind them: service boundaries, data model, APIs, cloud infrastructure and delivery. Then I build it.`,
+  "I weigh scalability, reliability, maintainability and running cost against what the product actually needs, and choose technology to fit the problem, not the other way around. Frontend is where I started and is still a strength, but today it is one layer of the systems I own rather than the whole job.",
+];
 
 export const technologyByType: Record<TechnologyType, Technology> = {
   [TechnologyType.JAVASCRIPT]: {
@@ -168,7 +181,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     years: 2,
   },
   [TechnologyType.TAILWINDCSS]: {
-    name: "TailwindCSS",
+    name: "Tailwind CSS",
     icon: (
       <>
         <TailwindCSSIcon />
@@ -213,7 +226,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     years: 4,
   },
   [TechnologyType.EXPRESSJS]: {
-    name: "ExpressJS",
+    name: "Express.js",
     icon: (
       <>
         <ExpressJSIcon />
@@ -258,7 +271,7 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     years: 2,
   },
   [TechnologyType.ELASTICSEARCH]: {
-    name: "ElasticSearch",
+    name: "Elasticsearch",
     icon: (
       <>
         <ElasticSearchIcon />
@@ -392,6 +405,52 @@ export const technologyByType: Record<TechnologyType, Technology> = {
     ),
     years: 3,
   },
+  [TechnologyType.GCP]: {
+    name: "GCP",
+    icon: (
+      <>
+        <GoogleCloudIcon />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.AZURE]: {
+    name: "Azure",
+    // Microsoft does not license its logo for this use; a neutral cloud in Azure blue stands in.
+    icon: (
+      <>
+        <Cloud size="1em" color="#0078D4" aria-hidden="true" />
+      </>
+    ),
+    years: 2,
+  },
+  [TechnologyType.GITHUB_ACTIONS]: {
+    name: "GitHub Actions",
+    icon: (
+      <>
+        <GitHubActionsIcon />
+      </>
+    ),
+    years: 3,
+  },
+  [TechnologyType.REDIS]: {
+    name: "Redis",
+    icon: (
+      <>
+        <RedisIcon />
+      </>
+    ),
+    years: 1,
+  },
+  [TechnologyType.BIGQUERY]: {
+    name: "BigQuery",
+    icon: (
+      <>
+        <BigQueryIcon />
+      </>
+    ),
+    years: 1,
+  },
   [TechnologyType.DOCKER]: {
     name: "Docker",
     icon: (
@@ -448,96 +507,111 @@ export const technologyByType: Record<TechnologyType, Technology> = {
   },
 };
 
+/** A competency or practice rather than a product, so it carries no icon or year count. */
+const concept = (name: string): Skill => ({ name });
+
+/**
+ * Skills, ordered as a hierarchy: architecture first, then the layers it is built on.
+ * Rendered as the Expertise section on the site and the Skills section of the printed CV.
+ */
 export const techCategories: TechCategory[] = [
   {
-    title: "Programming Languages",
-    icon: <Code className="h-6 w-6" />,
+    title: "Architecture & System Design",
+    icon: <Network className="h-6 w-6" />,
+    featured: true,
+    description:
+      "Working from requirements to a design: where the service boundaries go, how data is modeled and moved, what runs synchronously and what goes through a queue, how the system fails and recovers, and what it costs to run.",
     technologies: [
-      technologyByType[TechnologyType.JAVASCRIPT],
-      technologyByType[TechnologyType.TYPESCRIPT],
-      technologyByType[TechnologyType.CSHARP],
-      technologyByType[TechnologyType.PYTHON],
-      technologyByType[TechnologyType.SOLIDITY],
+      concept("Distributed Systems"),
+      concept("Modular Monoliths & Microservices"),
+      concept("Event-Driven Architecture"),
+      concept("Queues & Pub/Sub"),
+      concept("API Design (REST, GraphQL)"),
+      concept("Realtime & WebSockets"),
+      concept("Data Modeling"),
+      concept("Caching"),
+      concept("Authentication & Authorization"),
+      concept("Scalability & Performance"),
+      concept("Reliability & Failure Handling"),
+      concept("Cost Optimization"),
     ],
   },
   {
-    title: "Frontend",
-    icon: <Globe className="h-6 w-6" />,
+    title: "Cloud & Infrastructure",
+    icon: <Cloud className="h-6 w-6" />,
+    description:
+      "Infrastructure defined as code and shipped through CI/CD. Serverless or containers depending on the workload, and managed services where they remove operational work.",
     technologies: [
-      technologyByType[TechnologyType.HTML],
-      technologyByType[TechnologyType.CSS],
-      technologyByType[TechnologyType.SCSS],
-      technologyByType[TechnologyType.REACT],
-      technologyByType[TechnologyType.NEXTJS],
-      technologyByType[TechnologyType.ANGULAR],
-      technologyByType[TechnologyType.ANGULARJS],
-      technologyByType[TechnologyType.VUE],
-      technologyByType[TechnologyType.TAILWINDCSS],
-      technologyByType[TechnologyType.REACT_NATIVE],
-      technologyByType[TechnologyType.FIGMA],
+      technologyByType[TechnologyType.AWS],
+      technologyByType[TechnologyType.GCP],
+      technologyByType[TechnologyType.AZURE],
+      technologyByType[TechnologyType.TERRAFORM],
+      technologyByType[TechnologyType.PULUMI],
+      technologyByType[TechnologyType.SST],
+      technologyByType[TechnologyType.DOCKER],
+      technologyByType[TechnologyType.KUBERNETES],
+      concept("Serverless"),
+      concept("Infrastructure as Code"),
+      concept("CI/CD"),
+      technologyByType[TechnologyType.GITHUB_ACTIONS],
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Data",
     icon: <Server className="h-6 w-6" />,
+    description:
+      "APIs and services in Node.js, Python and .NET. Relational modeling in PostgreSQL by default, adding caching, search or document storage where access patterns call for it.",
     technologies: [
       technologyByType[TechnologyType.NODEJS],
       technologyByType[TechnologyType.NESTJS],
       technologyByType[TechnologyType.EXPRESSJS],
-      technologyByType[TechnologyType.GRAPHQL],
-      technologyByType[TechnologyType.DOTNET],
-      technologyByType[TechnologyType.DOTNET_CORE],
+      technologyByType[TechnologyType.PYTHON],
       technologyByType[TechnologyType.FASTAPI],
+      technologyByType[TechnologyType.CSHARP],
+      technologyByType[TechnologyType.DOTNET],
+      technologyByType[TechnologyType.GRAPHQL],
+      technologyByType[TechnologyType.POSTGRESQL],
+      technologyByType[TechnologyType.SQL],
+      technologyByType[TechnologyType.MONGODB],
+      technologyByType[TechnologyType.REDIS],
+      technologyByType[TechnologyType.BIGQUERY],
+      technologyByType[TechnologyType.PRISMA],
+      technologyByType[TechnologyType.DRIZZLE],
       technologyByType[TechnologyType.ELASTICSEARCH],
       technologyByType[TechnologyType.ALGOLIA],
     ],
   },
   {
-    title: "Database & ORM",
-    icon: <Database className="h-6 w-6" />,
+    title: "Frontend",
+    icon: <Globe className="h-6 w-6" />,
+    description:
+      "A decade of production frontend work across React, Angular and Vue, from component architecture to framework migrations.",
     technologies: [
-      technologyByType[TechnologyType.POSTGRESQL],
-      technologyByType[TechnologyType.DRIZZLE],
-      technologyByType[TechnologyType.PRISMA],
-      technologyByType[TechnologyType.MONGODB],
-      technologyByType[TechnologyType.MONGOOSE],
-      technologyByType[TechnologyType.SQL],
+      technologyByType[TechnologyType.TYPESCRIPT],
+      technologyByType[TechnologyType.JAVASCRIPT],
+      technologyByType[TechnologyType.REACT],
+      technologyByType[TechnologyType.NEXTJS],
+      technologyByType[TechnologyType.ANGULAR],
+      technologyByType[TechnologyType.VUE],
+      technologyByType[TechnologyType.REACT_NATIVE],
+      technologyByType[TechnologyType.TAILWINDCSS],
+      technologyByType[TechnologyType.SCSS],
     ],
   },
   {
-    title: "Testing",
-    icon: <TestTube className="h-6 w-6" />,
+    title: "Engineering Practice",
+    icon: <GitPullRequest className="h-6 w-6" />,
+    description: "Automated tests as a merge gate, code review, modernization of legacy codebases, and mentoring.",
     technologies: [
+      concept("Unit & E2E Testing"),
       technologyByType[TechnologyType.JEST],
       technologyByType[TechnologyType.PLAYWRIGHT],
       technologyByType[TechnologyType.CYPRESS],
       technologyByType[TechnologyType.MSWJS],
-      technologyByType[TechnologyType.MOCHA],
-      technologyByType[TechnologyType.JASMINE],
-      technologyByType[TechnologyType.PROTRACTOR],
-    ],
-  },
-  {
-    title: "Cloud & DevOps",
-    icon: <Cloud className="h-6 w-6" />,
-    technologies: [
-      technologyByType[TechnologyType.AWS],
-      technologyByType[TechnologyType.PULUMI],
-      technologyByType[TechnologyType.TERRAFORM],
-      technologyByType[TechnologyType.SST],
-      technologyByType[TechnologyType.DOCKER],
-      technologyByType[TechnologyType.KUBERNETES],
-    ],
-  },
-  {
-    title: "Computer Science",
-    icon: <Cpu className="h-6 w-6" />,
-    technologies: [
-      { name: "Design Patterns", icon: <></>, years: Number.POSITIVE_INFINITY },
-      { name: "Data Structures", icon: <></>, years: Number.POSITIVE_INFINITY },
-      { name: "Algorithms", icon: <></>, years: Number.POSITIVE_INFINITY },
-      { name: "System Design & Architecture", icon: <></>, years: Number.POSITIVE_INFINITY },
-      { name: "Cloud Infrastructure", icon: <></>, years: Number.POSITIVE_INFINITY },
+      concept("Code Review"),
+      concept("Mentoring"),
+      concept("Design Patterns"),
+      concept("Data Structures & Algorithms"),
     ],
   },
 ];
@@ -545,30 +619,29 @@ export const techCategories: TechCategory[] = [
 export const experiences: WorkingExperience[] = [
   {
     company: "Freelance",
-    role: "Software Engineer",
+    role: "Software Architect & Full-Stack Engineer",
     location: "Remote",
-    period: "December, 2020 - Present",
+    period: "December 2020 – Present",
     description:
-      "I have been working as a freelancer on the side whenever I have enough capacity. My favorite stack is React with Next.js, PostgreSQL, SST and Pulumi for IaC and AWS for cloud services, I've also been using Angular, Vue, Node.js and NestJS, depending on the project requirements.",
-    responsibilities: [
-      "Discovery sessions with clients to understand their needs",
-      "System design to address business requirements in a pragmatic and cost-efficient way",
-      "Deploying cloud infrastructure using popular IaC solutions like Terraform and Pulumi",
-      "Developing UI components using the framework of choice for the project",
-      "Developing backend APIs as per the business needs",
-      "Writing unit and end-to-end tests",
-      "Ensuring best practices are met across the codebase",
+      "Client projects where I own the technical side end to end: requirements, architecture, infrastructure, implementation and delivery. My default stack is React/Next.js and PostgreSQL on AWS, provisioned with SST and Pulumi, but the requirements decide.",
+    highlights: [
+      "Run discovery sessions with clients and turn business requirements into a technical design: system boundaries, data model, APIs and infrastructure.",
+      "Choose the architecture and managed services by weighing expected load, operational complexity and running cost, keeping each system as simple as its requirements allow.",
+      "Provision cloud infrastructure as code with SST, Pulumi and Terraform, so environments are reproducible and changes are reviewable.",
+      "Build the whole system myself: backend APIs and services, relational and document data models, and frontends in Next.js/React, Angular or Vue as the project calls for.",
+      "Own deployment and delivery, with unit and end-to-end tests and consistent engineering standards across the codebase.",
     ],
     technologies: [
       "AWS",
-      "Pulumi",
       "SST",
-      "React",
-      "Next.js",
+      "Pulumi",
+      "Terraform",
       "Node.js",
-      "PostgreSQL",
       "NestJS",
+      "PostgreSQL",
       "MongoDB Atlas",
+      "Next.js",
+      "React",
       "Angular",
       "Vue",
     ],
@@ -577,98 +650,120 @@ export const experiences: WorkingExperience[] = [
     company: "IKEA",
     role: "Software Engineer",
     location: "Remote",
-    period: "May, 2023 - December, 2024",
+    period: "May 2023 – December 2024",
     description:
-      "The project I worked on while at IKEA was the so-called ROIT - Range Offer Input Tool - which was a tool to allow users to optimize their range of articles exposed in physical stores based on key performance indicators (KPIs). When I joined the project, I discovered that their codebase did not follow most best practices and they had a lot of technical debt. Since the project itself was not that big, I decided to push myself and rewrite their entire frontend and backend in order to become easier to modify and extend. Before I left the project, everything was written to the best of my ability. Our tech stack involved GCP for cloud services, Docker, Kubernetes and Terraform for IaC, BigQuery, CloudSQL and Redis for database storage, a uvicorn Python server with FastAPI on the backend, Vue on the frontend, Jest for unit tests and Cypress with msw.js for end-to-end tests. We were using GitHub with GitHub Actions as our CI/CD pipelines so the tests were being run upon a pull request as a sort of an acceptance criterion. I was initially hired as a frontend developer, however I ended up doing fullstack development, so I had complete ownership of the features I delivered.",
-    responsibilities: [
-      "Collaborating with Product Owner, UI, Data and engineering to brainstorm solutions end-to-end",
-      "Ensuring best practices across our codebase",
-      "Supporting and extending the frontend and backend sides",
-      "Occasionally providing support on the infra-side",
-      "Helping fellow teammates",
-      "Reviewing pull requests",
-      "Writing unit and end-to-end tests",
+      "ROIT (Range Offer Input Tool), an internal application for optimizing the range of articles exposed in physical stores against key performance indicators.",
+    highlights: [
+      "Assessed the inherited codebase, identified the structural problems and technical debt that made it hard to change, and rewrote both the Vue frontend and the Python/FastAPI backend into a maintainable, extensible design. The rewrite was complete by the time I left.",
+      "Joined on the frontend and ended up owning the features I delivered end to end: the UI, the FastAPI service and the data layer (CloudSQL, BigQuery, Redis).",
+      "Worked in a containerized GCP environment (Docker, Kubernetes, infrastructure in Terraform) and contributed on the infrastructure side when needed.",
+      "Wrote unit (Jest) and end-to-end (Cypress with msw.js) tests that ran as a required check on every pull request in GitHub Actions.",
+      "Shaped solutions with the Product Owner, UI, Data and engineering; reviewed pull requests and supported teammates.",
     ],
     technologies: [
       "GCP",
-      "Docker",
       "Kubernetes",
+      "Docker",
       "Terraform",
-      "BigQuery",
-      "CloudSQL",
-      "SQL",
-      "uvicorn",
       "Python",
       "FastAPI",
+      "CloudSQL",
+      "BigQuery",
+      "Redis",
+      "SQL",
       "Vue",
       "Jest",
       "Cypress",
       "msw.js",
+      "GitHub Actions",
     ],
   },
   {
     company: "LogicFlow",
     role: "Software Engineer",
     location: "Remote",
-    period: "February, 2022 - April, 2023",
-    description:
-      "While at LogicFlow, I did not actually work on their core product. Instead, I was onboarded onto a project of a client of theirs which was basically a banking software written in AngularJS on the frontend and Java on the backend. My role there involved migrating the AngularJS part to Angular v12+ as well as writing unit tests to cover the functionality. We were using BitBucket pipelines for CI/CD so the tests were being executed upon a pull request towards the main branch.",
-    responsibilities: [
-      "Migrating bank software from angular.js to Angular v2+",
-      "Communicating with developers from the client's team to ensure business requirements are met",
-      "Reviewing pull requests",
-      "Helping fellow teammates",
-      "Migrating and writing unit and end-to-end tests",
+    period: "February 2022 – April 2023",
+    description: "Client engagement on banking software: migrating its AngularJS frontend to Angular v12+.",
+    highlights: [
+      "Moved application code from AngularJS to Angular v12+, porting the existing unit and end-to-end tests and writing new ones to protect behavior through the migration.",
+      "Worked directly with the client's developers to keep migrated functionality aligned with business requirements.",
+      "Delivered through Bitbucket Pipelines, with the test suite gating pull requests to main; reviewed pull requests and supported teammates.",
     ],
-    technologies: ["Angular", "AngularJS", "JavaScript", "TypeScript", "Mocha", "Protractor", "Jest"],
+    technologies: [
+      "Angular",
+      "AngularJS",
+      "TypeScript",
+      "JavaScript",
+      "Jest",
+      "Mocha",
+      "Protractor",
+      "Bitbucket Pipelines",
+    ],
   },
   {
     company: "Taxback International",
     role: "Software Engineer",
     location: "Remote",
-    period: "February, 2021 - January, 2022",
+    period: "February 2021 – January 2022",
     description:
-      "Taxback Group is a family of companies providing tools for tax and VAT management. While there, I worked on an in-house project with Angular where I had to implement response caching on the client side using IndexedDB as well as extend their existing UI and work on bug fixing. Later on we began building a React Native application to basically port that project to mobile (I was the one who suggested React Native and my team lead liked the idea so we went for it). I am not entirely sure about their overall tech stack as I did not get entirely involved in it.",
-    responsibilities: [
-      "Communicating with Product Owner and UI team to address business requirements",
-      "Working with tech lead on architectural changes and system design",
-      "Working with QA to address issues and inconsistencies",
-      "Ensuring best practices across my domain",
-      "Mentoring fellow teammates",
-      "Reviewing pull requests",
+      "In-house Angular application at Taxback Group, a family of companies providing tax and VAT management tools.",
+    highlights: [
+      "Implemented client-side response caching on IndexedDB to avoid redundant network requests, alongside UI extensions and bug fixes.",
+      "Proposed React Native for bringing the application to mobile; the team lead agreed and we started building the port.",
+      "Worked with the tech lead on architectural changes and system design; mentored teammates and reviewed pull requests.",
     ],
-    technologies: ["Angular", "JavaScript", "TypeScript", "React Native"],
+    technologies: ["Angular", "TypeScript", "JavaScript", "React Native", "IndexedDB"],
   },
   {
     company: "WeTrack",
-    role: "FullStack Developer",
+    role: "Full-Stack Developer",
     location: "Remote",
-    period: "July, 2017 - December, 2020",
+    period: "July 2017 – December 2020",
     description:
-      "WeTrack is a platform that provides project and risk management solutions. I implemented a substantial part of their user interface using Angular v2+. We had designs for everything which were provided to us in Zeplin, and this meant creating a whole bunch of custom components to properly adhere to said designs, which gave me the opportunity to get my hands really dirty building all of them thus gaining quite some expertise in building components from scratch. Even though I was more involved on the frontend, I also did some backend work for certain features (one of which involved a filtered Gantt chart view) and I also helped for the backend refactoring when we decided to do that. Our tech stack consisted of Azure for cloud services, .NET Core with Entity Framework on the backend, SQL Server for our database and Angular v2+ on the frontend, and later on we started using Ionic in order to implement PWA capabilities with proper gestures on mobile.",
-    responsibilities: [
-      "Communicating with our CTO (who was also like a Product Owner and a UI-person) to ensure business requirements are seamlessly met at the technical level",
-      "Developing custom components based on Zeplin designs using Angular v2+",
-      "Helping to refactor the backend architecture",
-      "Extending and developing features on the backend using .NET Core and Entity Framework",
-      "Mentoring junior developers and helping them with issues",
-      "Reviewing pull requests",
-      "Helping teammates with issues concerning my expertise",
+      "Project and risk management platform on Azure, built with Angular, .NET Core, Entity Framework and SQL Server, later adding Ionic for PWA support and touch gestures on mobile.",
+    highlights: [
+      "Built a substantial part of the Angular frontend, including a large set of custom components implemented from Zeplin designs.",
+      "Delivered backend features in .NET Core and Entity Framework, such as a filtered Gantt chart view, and contributed to refactoring the backend architecture.",
+      "Worked directly with the CTO, who also acted as product owner and designer, to turn business requirements into technical solutions.",
+      "Mentored junior developers and reviewed pull requests.",
     ],
-    technologies: ["Angular", "JavaScript", "TypeScript", "SCSS", "C#", ".NET Core", "Entity Framework", "Azure"],
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "SCSS",
+      "Ionic",
+      "C#",
+      ".NET Core",
+      "Entity Framework",
+      "SQL Server",
+      "Azure",
+    ],
   },
   {
     company: "Oxxy",
     role: "JavaScript Developer",
-    location: "On-site - Sofia, Bulgaria",
-    period: "June, 2016 - April, 2017",
-    description:
-      "Oxxy is a site builder like Wix. We wrote mostly vanilla JavaScript and later on we started using Angular and Vue to implement e-commerce store functionality. On the backend they were using PHP with Laravel, however I never worked on those as I was just starting off and did not have any experience to be able to tackle them.",
-    responsibilities: [
-      "Implementing various features like the ability to rotate widgets and scale them proportionally for mobile devices using pure JavaScript",
-      "Implementing e-commerce store creation capabilities on the frontend using Angular v2",
-      "Collaborating with team lead and fellow teammates on resolving bugs and improving the codebase",
+    location: "Sofia, Bulgaria (on-site)",
+    period: "June 2016 – April 2017",
+    description: "First professional role, at a website builder platform similar to Wix.",
+    highlights: [
+      "Built editor features in vanilla JavaScript, such as widget rotation and proportional scaling for mobile layouts.",
+      "Implemented e-commerce store creation on the frontend with Angular and Vue.",
     ],
     technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
   },
 ];
+
+export const education: Education[] = [
+  {
+    institution: "Software University (SoftUni)",
+    program: "Software Engineering",
+    location: "Sofia, Bulgaria (remote)",
+    note: "Studied remotely while in high school; started my first developer role two weeks after graduating.",
+  },
+];
+
+/**
+ * Architecture case studies. Empty for now: add entries here and an "Architecture Case Studies"
+ * section appears on the site and a "Selected Architecture Work" section in the printed CV.
+ */
+export const caseStudies: CaseStudy[] = [];

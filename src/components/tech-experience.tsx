@@ -1,7 +1,7 @@
 "use client";
 
 import type { Technology } from "@/types/technology.interface";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,6 +13,7 @@ interface Props {
 const TechExperience: React.FC<Props> = ({ technologies, maxYears }) => {
   const [isVisible, setIsVisible] = useState(false);
   const componentRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,30 +69,36 @@ const TechExperience: React.FC<Props> = ({ technologies, maxYears }) => {
       ref={componentRef}
       className="rounded-xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-700 dark:bg-slate-800"
     >
-      <div className="space-y-6">
+      <ul className="grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
         {sortedByExperience.map((tech, index) => (
-          <div key={index} className="space-y-2">
-            <div className="flex items-center justify-between">
+          <li key={tech.name} className="space-y-2">
+            <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100">{tech.icon}</div>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100">
+                  {tech.icon}
+                </div>
                 <span className="font-medium text-gray-900 dark:text-gray-100">{tech.name}</span>
               </div>
-              <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <div className="text-sm font-medium whitespace-nowrap text-gray-700 dark:text-gray-300">
                 {getExperienceText(tech.years)}
               </div>
             </div>
 
-            <div className="h-2 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-700">
+            <div aria-hidden="true" className="h-2 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-700">
               <motion.div
                 className={`h-full ${getProgressColor(tech.years)} rounded-full`}
                 initial={{ width: 0 }}
                 animate={isVisible ? { width: `${getProgressValue(tech.years)}%` } : { width: 0 }}
-                transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { duration: 0.8, delay: Math.min(index * 0.04, 1.2), ease: "easeOut" }
+                }
               />
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

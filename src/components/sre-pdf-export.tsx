@@ -63,8 +63,8 @@ const SREPDFContent = forwardRef<HTMLDivElement>((props, ref) => (
             </span>
           </div>
           <ul className="sre-pdf-bullets">
-            {experience.responsibilities.map((responsibility, idx) => (
-              <li key={idx}>{responsibility}</li>
+            {experience.highlights.map((highlight, idx) => (
+              <li key={idx}>{highlight}</li>
             ))}
           </ul>
           <p className="sre-pdf-tech">{experience.technologies.join(" · ")}</p>
