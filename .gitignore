@@ -20,6 +20,9 @@
 # production
 /build
 
+# generated CV PDFs (npm run cv:pdf)
+/cv-exports
+
 # misc
 .DS_Store
 *.pem

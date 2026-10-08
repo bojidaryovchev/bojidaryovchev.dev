@@ -7,19 +7,16 @@ import StructuredData from "@/components/structured-data";
 import TechExperience from "@/components/tech-experience";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
-import {
-  caseStudies,
-  education,
-  experiences,
-  profileSummary,
-  techCategories,
-  technologyByType,
-  yearsOfExperience,
-} from "@/constants";
-import { siteConfig } from "@/site-config";
-import { GraduationCap, Mail, MapPin } from "lucide-react";
+import { technologyByType, yearsOfExperience } from "@/constants";
+import { cvFileName, defaultCvProfile, resolveCv } from "@/cv-profiles";
+import { locationLabel, siteConfig } from "@/site-config";
+import { Briefcase, GraduationCap, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
+
+// The homepage is the default CV profile; the other profiles live under /cv.
+const cv = resolveCv(defaultCvProfile);
+const { caseStudies, education } = cv;
 
 const Home: React.FC = () => {
   return (
@@ -64,19 +61,21 @@ const Home: React.FC = () => {
                   ))}
                 </ul>
                 <div className="mx-auto max-w-3xl space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-                  {profileSummary.map((paragraph) => (
+                  {cv.profile.summary.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
               </div>
 
               {/* Contact Info */}
-              <div className="mb-8 flex flex-wrap justify-center gap-6">
+              <div className="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
                 <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                   <MapPin className="h-5 w-5" />
-                  <span>
-                    {siteConfig.location.city}, {siteConfig.location.country}
-                  </span>
+                  <span>{locationLabel}</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                  <Briefcase className="h-5 w-5" />
+                  <span>{siteConfig.availability.join(" · ")}</span>
                 </div>
                 <a
                   href={`mailto:${siteConfig.email}`}
@@ -95,7 +94,7 @@ const Home: React.FC = () => {
                     GitHub
                   </a>
                 </Button>
-                <PDFExport />
+                <PDFExport fileName={cvFileName(defaultCvProfile)} />
               </div>
             </div>
           </div>
@@ -110,7 +109,7 @@ const Home: React.FC = () => {
                 From architecture and cloud infrastructure down to the UI
               </p>
             </div>
-            <TechStack categories={techCategories} columns={2} />
+            <TechStack categories={cv.skills} columns={2} />
           </div>
         </section>
 
@@ -123,7 +122,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="space-y-8">
-              {experiences.map((experience) => (
+              {cv.experiences.map((experience) => (
                 <ExperienceCard key={`${experience.company}-${experience.period}`} {...experience} />
               ))}
             </div>
@@ -195,16 +194,8 @@ const Home: React.FC = () => {
         </footer>
       </div>
 
-      <CvDocument
-        className="hidden print:block"
-        title={siteConfig.jobTitle}
-        focusAreas={siteConfig.focusAreas}
-        summary={profileSummary}
-        skills={techCategories}
-        experiences={experiences}
-        caseStudies={caseStudies}
-        education={education}
-      />
+      {/* Printing the homepage prints the CV instead of the site. */}
+      <CvDocument cv={cv} className="hidden print:block" />
     </>
   );
 };

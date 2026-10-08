@@ -11,6 +11,7 @@ import SQLIcon from "@/components/icons/sql-icon";
 import SSTIcon from "@/components/icons/sst-icon";
 import TerraformIcon from "@/components/icons/terraform-icon";
 import TypeScriptIcon from "@/components/icons/typescript-icon";
+import { experiences, yearsOfExperience } from "@/constants";
 import { TechCategory } from "@/types/tech-category.interface";
 import { Technology } from "@/types/technology.interface";
 import { WorkingExperience } from "@/types/working-experience.interface";
@@ -32,7 +33,7 @@ export const sreTitle = "DevOps / Platform Engineer";
 export const sreTagline = "Cloud Infrastructure · IaC · CI/CD · Reliability";
 
 export const sreSummary: string[] = [
-  "DevOps / Platform Engineer with 10 years of engineering experience building, shipping and operating cloud systems on AWS and GCP. I work across the whole delivery lifecycle — infrastructure as code with Terraform and Pulumi, containerized workloads on Docker and Kubernetes, and CI/CD pipelines that make deployments fast and safe — with a focus on reliability, automation and observability.",
+  `DevOps / Platform Engineer with ${yearsOfExperience} years of engineering experience building, shipping and operating cloud systems on AWS and GCP. I work across the whole delivery lifecycle — infrastructure as code with Terraform and Pulumi, containerized workloads on Docker and Kubernetes, and CI/CD pipelines that make deployments fast and safe — with a focus on reliability, automation and observability.`,
   "I like owning problems end to end: standing up networking, compute and managed data services in the cloud, wiring up the pipelines that ship to them, and keeping the running system healthy and debuggable. Because I've also built the applications on top, I understand systems from the Linux host and the VPC all the way up to the API — which makes root-causing incidents and reducing operational toil come naturally.",
 ];
 
@@ -224,12 +225,14 @@ export const sreTechCategories: TechCategory[] = [
   },
 ];
 
-export const sreExperiences: WorkingExperience[] = [
-  {
-    company: "Freelance",
+/**
+ * How each role is framed for an SRE / DevOps reader. Employers, official titles, dates and
+ * locations are not repeated here: they come from the canonical history in constants.tsx.
+ * A role without an entry falls back to its canonical description.
+ */
+const sreFraming: Record<string, Partial<WorkingExperience>> = {
+  Freelance: {
     role: "Software Engineer · Cloud & Infrastructure",
-    location: "Remote",
-    period: "December, 2020 - Present",
     description:
       "Independent engineering work centred on cloud infrastructure and delivery. I design and provision AWS environments as infrastructure as code with Terraform, Pulumi and SST, build the CI/CD around them, and architect systems to be reliable and cost-efficient. A typical engagement means standing up networking, compute and managed data services on AWS, containerizing workloads with Docker, wiring up deployment pipelines, and then building the application layer (Next.js / Node.js / PostgreSQL) on top — so I own and understand the system end to end.",
     highlights: [
@@ -254,11 +257,7 @@ export const sreExperiences: WorkingExperience[] = [
       "PostgreSQL",
     ],
   },
-  {
-    company: "IKEA",
-    role: "Software Engineer",
-    location: "Remote",
-    period: "May, 2023 - December, 2024",
+  IKEA: {
     description:
       "I worked on ROIT (Range Offer Input Tool), a data-driven platform that helps stores optimize the range of articles they expose against key performance indicators, and I owned features end to end across infrastructure, backend and frontend. The platform ran on GCP with workloads containerized in Docker and orchestrated on Kubernetes, provisioned through Terraform, and backed by BigQuery, CloudSQL and Redis, with a Python / FastAPI service on the backend. CI/CD ran on GitHub Actions, with the automated test suite gating every pull request as a release criterion. Alongside application code I regularly worked on the infrastructure and delivery side, which gave me hands-on ownership of how the service was built, deployed and kept healthy — including rewriting a debt-laden codebase to a maintainable, reliable state.",
     highlights: [
@@ -285,11 +284,7 @@ export const sreExperiences: WorkingExperience[] = [
       "CI/CD",
     ],
   },
-  {
-    company: "LogicFlow",
-    role: "Software Engineer",
-    location: "Remote",
-    period: "February, 2022 - April, 2023",
+  LogicFlow: {
     description:
       "Worked on a client's banking platform, leading the migration of a large AngularJS frontend to modern Angular and building out automated test coverage to protect the migration. Delivery ran through BitBucket Pipelines, with the test suite executed on every pull request to main as an acceptance gate before code could be merged.",
     highlights: [
@@ -301,11 +296,7 @@ export const sreExperiences: WorkingExperience[] = [
     ],
     technologies: ["BitBucket Pipelines", "CI/CD", "Angular", "TypeScript", "JavaScript", "Jest"],
   },
-  {
-    company: "Taxback International",
-    role: "Software Engineer",
-    location: "Remote",
-    period: "February, 2021 - January, 2022",
+  "Taxback International": {
     description:
       "Built and extended an internal Angular application, implementing client-side response caching with IndexedDB to cut redundant network calls and improve responsiveness, and initiated a React Native port to mobile. Focused on the performance and reliability of the client experience while collaborating closely with product, UI and QA.",
     highlights: [
@@ -317,11 +308,7 @@ export const sreExperiences: WorkingExperience[] = [
     ],
     technologies: ["Angular", "TypeScript", "React Native", "IndexedDB"],
   },
-  {
-    company: "WeTrack",
-    role: "FullStack Developer",
-    location: "Remote",
-    period: "July, 2017 - December, 2020",
+  WeTrack: {
     description:
       "Built a large part of a project and risk management platform hosted on Azure, working primarily in Angular on the frontend with .NET Core and Entity Framework on the backend and SQL Server for storage. Contributed to a backend architecture refactor and extended backend features, gaining early exposure to running an application in a managed cloud environment.",
     highlights: [
@@ -332,11 +319,7 @@ export const sreExperiences: WorkingExperience[] = [
     ],
     technologies: ["Azure", ".NET Core", "C#", "Entity Framework", "SQL Server", "Angular"],
   },
-  {
-    company: "Oxxy",
-    role: "JavaScript Developer",
-    location: "On-site - Sofia, Bulgaria",
-    period: "June, 2016 - April, 2017",
+  Oxxy: {
     description:
       "First professional role at a website-builder platform, working mostly in vanilla JavaScript and later Angular and Vue to implement e-commerce store functionality. Where I learned to build software properly in a team and ship features to real users.",
     highlights: [
@@ -346,4 +329,10 @@ export const sreExperiences: WorkingExperience[] = [
     ],
     technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
   },
-];
+};
+
+export const sreExperiences: WorkingExperience[] = experiences.map((experience) => ({
+  ...experience,
+  highlights: experience.highlights.map(({ text }) => text),
+  ...sreFraming[experience.company],
+}));

@@ -1,11 +1,10 @@
 import { Badge } from "@/components/ui/badge";
-import { techCategories } from "@/constants";
 import { cn } from "@/lib/utils";
 import type { TechCategory } from "@/types/tech-category.interface";
 import React, { JSX } from "react";
 
 interface Props {
-  categories?: TechCategory[];
+  categories: TechCategory[];
   /** Columns for the regular (non-featured) categories on large screens. */
   columns?: 2 | 3;
 }
@@ -68,7 +67,7 @@ const CategoryCard: React.FC<{ category: TechCategory }> = ({ category }) => {
   );
 };
 
-const TechStack: React.FC<Props> = ({ categories = techCategories, columns = 3 }) => {
+const TechStack: React.FC<Props> = ({ categories, columns = 3 }) => {
   const featured = categories.filter((category) => category.featured);
   const regular = categories.filter((category) => !category.featured);
 

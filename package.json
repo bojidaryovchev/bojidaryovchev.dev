@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "cv:pdf": "node scripts/export-cv.mjs",
     "lint-staged:eslint:fix": "eslint --fix **/*.{js,mjs,ts,tsx}",
     "lint-staged:prettier:write": "prettier --write **/*.{js,mjs,ts,tsx,css,md,json}"
   },

@@ -3,6 +3,7 @@ import GithubIcon from "@/components/icons/github-icon";
 import SREPDFExport from "@/components/sre-pdf-export";
 import TechStack from "@/components/tech-stack";
 import { Button } from "@/components/ui/button";
+import { yearsOfExperience } from "@/constants";
 import { siteConfig } from "@/site-config";
 import { sreExperiences, sreSummary, sreTagline, sreTechCategories, sreTitle } from "@/sre-constants";
 import { ArrowLeft, Mail, MapPin } from "lucide-react";
@@ -12,8 +13,8 @@ import Link from "next/link";
 import type React from "react";
 
 export const metadata: Metadata = {
-  title: `Bojidar Yovchev — ${sreTitle}`,
-  description: `${sreTitle} with 10 years of engineering experience across AWS, GCP, Terraform, Docker, Kubernetes and CI/CD, focused on reliability, automation and observability.`,
+  title: { absolute: `${siteConfig.name} — ${sreTitle}` },
+  description: `${sreTitle} with ${yearsOfExperience} years of engineering experience across AWS, GCP, Terraform, Docker, Kubernetes and CI/CD, focused on reliability, automation and observability.`,
   alternates: {
     canonical: "/sre",
   },
@@ -60,7 +61,9 @@ const SREPage: React.FC = () => {
             <div className="mb-8 flex flex-wrap justify-center gap-6">
               <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                 <MapPin className="h-5 w-5" />
-                <span>Plovdiv, Bulgaria</span>
+                <span>
+                  {siteConfig.location.city}, {siteConfig.location.country}
+                </span>
               </div>
               <a
                 href={`mailto:${siteConfig.email}`}

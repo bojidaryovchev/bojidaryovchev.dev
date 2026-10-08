@@ -1,5 +1,6 @@
 "use client";
 
+import { siteConfig } from "@/site-config";
 import { sreExperiences, sreSummary, sreTagline, sreTechCategories, sreTitle } from "@/sre-constants";
 import { Download } from "lucide-react";
 import Image from "next/image";
@@ -20,7 +21,10 @@ const SREPDFContent = forwardRef<HTMLDivElement>((props, ref) => (
         <h1>Bojidar Yovchev</h1>
         <p className="sre-pdf-role">{sreTitle}</p>
         <p className="sre-pdf-tagline">{sreTagline}</p>
-        <p className="sre-pdf-contact">Plovdiv, Bulgaria · bojidaryovchev1@gmail.com · github.com/bojidaryovchev</p>
+        <p className="sre-pdf-contact">
+          {siteConfig.location.city}, {siteConfig.location.country} · {siteConfig.email} ·{" "}
+          {siteConfig.profiles.github.replace("https://", "")}
+        </p>
       </div>
     </div>
 

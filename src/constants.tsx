@@ -46,21 +46,21 @@ import TerraformIcon from "@/components/icons/terraform-icon";
 import TypeScriptIcon from "@/components/icons/typescript-icon";
 import VueIcon from "@/components/icons/vue-icon";
 import { CaseStudy } from "@/types/case-study.interface";
+import { SkillCategoryId } from "@/types/cv-profile.interface";
 import { Education } from "@/types/education.interface";
+import { Experience, ExperienceHighlight, HighlightTheme } from "@/types/experience.interface";
 import { Skill } from "@/types/skill.interface";
 import { TechCategory } from "@/types/tech-category.interface";
 import { TechnologyType } from "@/types/technology-type.enum";
 import { Technology } from "@/types/technology.interface";
-import { WorkingExperience } from "@/types/working-experience.interface";
 import { Cloud, GitPullRequest, Globe, Network, Server } from "lucide-react";
 
-export const yearsOfExperience = 10;
+/**
+ * The canonical professional record: skills, roles and education, stated once.
+ * CV profiles (src/cv-profiles.ts) choose what leads; nothing here is duplicated per profile.
+ */
 
-/** Opening profile: rendered in the hero and as the Summary of the printed CV. */
-export const profileSummary: string[] = [
-  `Software architect and senior full-stack engineer with ${yearsOfExperience}+ years of professional experience designing and building web platforms end to end. I take product and business requirements and work out the system behind them: service boundaries, data model, APIs, cloud infrastructure and delivery. Then I build it.`,
-  "I weigh scalability, reliability, maintainability and running cost against what the product actually needs, and choose technology to fit the problem, not the other way around. Frontend is where I started and is still a strength, but today it is one layer of the systems I own rather than the whole job.",
-];
+export const yearsOfExperience = 10;
 
 export const technologyByType: Record<TechnologyType, Technology> = {
   [TechnologyType.JAVASCRIPT]: {
@@ -511,11 +511,11 @@ export const technologyByType: Record<TechnologyType, Technology> = {
 const concept = (name: string): Skill => ({ name });
 
 /**
- * Skills, ordered as a hierarchy: architecture first, then the layers it is built on.
- * Rendered as the Expertise section on the site and the Skills section of the printed CV.
+ * Skills by category. The canonical order is the hierarchy: architecture first, then the
+ * layers it is built on. Rendered as the Expertise section and as the Skills of every CV.
  */
-export const techCategories: TechCategory[] = [
-  {
+export const skillCategories: Record<SkillCategoryId, TechCategory> = {
+  architecture: {
     title: "Architecture & System Design",
     icon: <Network className="h-6 w-6" />,
     featured: true,
@@ -526,8 +526,8 @@ export const techCategories: TechCategory[] = [
       concept("Modular Monoliths & Microservices"),
       concept("Event-Driven Architecture"),
       concept("Queues & Pub/Sub"),
-      concept("API Design (REST, GraphQL)"),
-      concept("Realtime & WebSockets"),
+      concept("API Design"),
+      concept("Realtime Systems"),
       concept("Data Modeling"),
       concept("Caching"),
       concept("Authentication & Authorization"),
@@ -536,11 +536,11 @@ export const techCategories: TechCategory[] = [
       concept("Cost Optimization"),
     ],
   },
-  {
+  cloud: {
     title: "Cloud & Infrastructure",
     icon: <Cloud className="h-6 w-6" />,
     description:
-      "Infrastructure defined as code and shipped through CI/CD. Serverless or containers depending on the workload, and managed services where they remove operational work.",
+      "Infrastructure defined as code and shipped through CI/CD, serverless or containers depending on the workload. Deepest on AWS, where I provision the infrastructure myself; GCP, Kubernetes and Azure are platforms I have built applications on.",
     technologies: [
       technologyByType[TechnologyType.AWS],
       technologyByType[TechnologyType.GCP],
@@ -556,11 +556,11 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.GITHUB_ACTIONS],
     ],
   },
-  {
+  backend: {
     title: "Backend & Data",
     icon: <Server className="h-6 w-6" />,
     description:
-      "APIs and services in Node.js, Python and .NET. Relational modeling in PostgreSQL by default, adding caching, search or document storage where access patterns call for it.",
+      "APIs and services in Node.js, Python and .NET. Relational modeling in PostgreSQL by default, adding caching or document storage where access patterns call for it.",
     technologies: [
       technologyByType[TechnologyType.NODEJS],
       technologyByType[TechnologyType.NESTJS],
@@ -569,6 +569,7 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.FASTAPI],
       technologyByType[TechnologyType.CSHARP],
       technologyByType[TechnologyType.DOTNET],
+      concept("REST APIs"),
       technologyByType[TechnologyType.GRAPHQL],
       technologyByType[TechnologyType.POSTGRESQL],
       technologyByType[TechnologyType.SQL],
@@ -577,11 +578,9 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.BIGQUERY],
       technologyByType[TechnologyType.PRISMA],
       technologyByType[TechnologyType.DRIZZLE],
-      technologyByType[TechnologyType.ELASTICSEARCH],
-      technologyByType[TechnologyType.ALGOLIA],
     ],
   },
-  {
+  frontend: {
     title: "Frontend",
     icon: <Globe className="h-6 w-6" />,
     description:
@@ -598,7 +597,7 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.SCSS],
     ],
   },
-  {
+  practice: {
     title: "Engineering Practice",
     icon: <GitPullRequest className="h-6 w-6" />,
     description: "Automated tests as a merge gate, code review, modernization of legacy codebases, and mentoring.",
@@ -607,29 +606,41 @@ export const techCategories: TechCategory[] = [
       technologyByType[TechnologyType.JEST],
       technologyByType[TechnologyType.PLAYWRIGHT],
       technologyByType[TechnologyType.CYPRESS],
-      technologyByType[TechnologyType.MSWJS],
-      concept("Code Review"),
       concept("Mentoring"),
-      concept("Design Patterns"),
-      concept("Data Structures & Algorithms"),
+      concept("Legacy Modernization"),
     ],
   },
-];
+};
 
-export const experiences: WorkingExperience[] = [
+/** Tags a bullet with what it is evidence of, so a profile can lead with it. Untagged bullets never move. */
+const evidence = (text: string, ...themes: HighlightTheme[]): ExperienceHighlight => ({ text, themes });
+
+/**
+ * Roles, most recent first, written in the order the default (architect) CV shows them.
+ * Freelance bullets are deliberately untagged: they read as a chain from requirements to delivery.
+ */
+export const experiences: Experience[] = [
   {
     company: "Freelance",
     role: "Software Architect & Full-Stack Engineer",
     location: "Remote",
     period: "December 2020 – Present",
     description:
-      "Client projects where I own the technical side end to end: requirements, architecture, infrastructure, implementation and delivery. My default stack is React/Next.js and PostgreSQL on AWS, provisioned with SST and Pulumi, but the requirements decide.",
+      "Client projects where I own the technical side end to end, from requirements to delivery. Recent builds are mostly React/Next.js and PostgreSQL on AWS, but each stack is picked for the project at hand.",
     highlights: [
-      "Run discovery sessions with clients and turn business requirements into a technical design: system boundaries, data model, APIs and infrastructure.",
-      "Choose the architecture and managed services by weighing expected load, operational complexity and running cost, keeping each system as simple as its requirements allow.",
-      "Provision cloud infrastructure as code with SST, Pulumi and Terraform, so environments are reproducible and changes are reviewable.",
-      "Build the whole system myself: backend APIs and services, relational and document data models, and frontends in Next.js/React, Angular or Vue as the project calls for.",
-      "Own deployment and delivery, with unit and end-to-end tests and consistent engineering standards across the codebase.",
+      evidence(
+        "Run discovery with clients and turn business requirements into a technical design: system boundaries, data model, APIs and infrastructure.",
+      ),
+      evidence(
+        "Choose the architecture and managed services by weighing expected load, operational complexity and running cost, keeping each system as simple as its requirements allow.",
+      ),
+      evidence(
+        "Provision AWS infrastructure as code with SST, Pulumi and Terraform, so environments are reproducible.",
+      ),
+      evidence(
+        "Build the whole system myself: backend APIs and services, relational and document data models, and frontends in Next.js/React, Angular or Vue as the project calls for.",
+      ),
+      evidence("Own testing and delivery: unit and end-to-end tests, deployment and consistent code standards."),
     ],
     technologies: [
       "AWS",
@@ -652,13 +663,27 @@ export const experiences: WorkingExperience[] = [
     location: "Remote",
     period: "May 2023 – December 2024",
     description:
-      "ROIT (Range Offer Input Tool), an internal application for optimizing the range of articles exposed in physical stores against key performance indicators.",
+      "ROIT (Range Offer Input Tool), an internal tool for optimizing the range of articles in physical stores against KPIs.",
     highlights: [
-      "Assessed the inherited codebase, identified the structural problems and technical debt that made it hard to change, and rewrote both the Vue frontend and the Python/FastAPI backend into a maintainable, extensible design. The rewrite was complete by the time I left.",
-      "Joined on the frontend and ended up owning the features I delivered end to end: the UI, the FastAPI service and the data layer (CloudSQL, BigQuery, Redis).",
-      "Worked in a containerized GCP environment (Docker, Kubernetes, infrastructure in Terraform) and contributed on the infrastructure side when needed.",
-      "Wrote unit (Jest) and end-to-end (Cypress with msw.js) tests that ran as a required check on every pull request in GitHub Actions.",
-      "Shaped solutions with the Product Owner, UI, Data and engineering; reviewed pull requests and supported teammates.",
+      evidence(
+        "Assessed the inherited codebase, identified the structural problems and technical debt that made it hard to change, and completed a full rewrite of both the Vue frontend and the Python/FastAPI backend into a maintainable, extensible design.",
+        "frontend",
+        "backend",
+      ),
+      evidence(
+        "Joined on the frontend and ended up owning features end to end: the UI, the FastAPI service and the data layer (CloudSQL, BigQuery, Redis).",
+        "frontend",
+        "backend",
+      ),
+      evidence(
+        "Worked in a GCP environment on Docker, Kubernetes and Terraform, with occasional infrastructure work.",
+        "infrastructure",
+      ),
+      evidence(
+        "Wrote unit (Jest) and end-to-end (Cypress) tests that gated every pull request in GitHub Actions.",
+        "testing",
+      ),
+      evidence("Shaped solutions with Product, UI and Data; reviewed pull requests and supported teammates."),
     ],
     technologies: [
       "GCP",
@@ -670,11 +695,7 @@ export const experiences: WorkingExperience[] = [
       "CloudSQL",
       "BigQuery",
       "Redis",
-      "SQL",
       "Vue",
-      "Jest",
-      "Cypress",
-      "msw.js",
       "GitHub Actions",
     ],
   },
@@ -683,11 +704,19 @@ export const experiences: WorkingExperience[] = [
     role: "Software Engineer",
     location: "Remote",
     period: "February 2022 – April 2023",
-    description: "Client engagement on banking software: migrating its AngularJS frontend to Angular v12+.",
+    description: "Client engagement on banking software: migrating a large AngularJS frontend to Angular v12+.",
     highlights: [
-      "Moved application code from AngularJS to Angular v12+, porting the existing unit and end-to-end tests and writing new ones to protect behavior through the migration.",
-      "Worked directly with the client's developers to keep migrated functionality aligned with business requirements.",
-      "Delivered through Bitbucket Pipelines, with the test suite gating pull requests to main; reviewed pull requests and supported teammates.",
+      evidence(
+        "Moved application code from AngularJS to Angular v12+, porting the existing unit and end-to-end tests and writing new ones to protect behavior through the migration.",
+        "frontend",
+      ),
+      evidence(
+        "Worked directly with the client's developers to keep migrated functionality aligned with business requirements.",
+      ),
+      evidence(
+        "Delivered through Bitbucket Pipelines, with the test suite gating pull requests to main; reviewed teammates' code.",
+        "testing",
+      ),
     ],
     technologies: [
       "Angular",
@@ -705,12 +734,14 @@ export const experiences: WorkingExperience[] = [
     role: "Software Engineer",
     location: "Remote",
     period: "February 2021 – January 2022",
-    description:
-      "In-house Angular application at Taxback Group, a family of companies providing tax and VAT management tools.",
+    description: "In-house Angular application at Taxback Group, a family of tax and VAT management companies.",
     highlights: [
-      "Implemented client-side response caching on IndexedDB to avoid redundant network requests, alongside UI extensions and bug fixes.",
-      "Proposed React Native for bringing the application to mobile; the team lead agreed and we started building the port.",
-      "Worked with the tech lead on architectural changes and system design; mentored teammates and reviewed pull requests.",
+      evidence("Implemented client-side response caching on IndexedDB to cut redundant network requests.", "frontend"),
+      evidence(
+        "Proposed React Native for the mobile port; the team lead agreed and we started building it.",
+        "frontend",
+      ),
+      evidence("Worked with the tech lead on architectural changes and system design; mentored teammates."),
     ],
     technologies: ["Angular", "TypeScript", "JavaScript", "React Native", "IndexedDB"],
   },
@@ -719,13 +750,20 @@ export const experiences: WorkingExperience[] = [
     role: "Full-Stack Developer",
     location: "Remote",
     period: "July 2017 – December 2020",
-    description:
-      "Project and risk management platform on Azure, built with Angular, .NET Core, Entity Framework and SQL Server, later adding Ionic for PWA support and touch gestures on mobile.",
+    description: "Project and risk management platform on Azure: Angular, .NET Core, Entity Framework and SQL Server.",
     highlights: [
-      "Built a substantial part of the Angular frontend, including a large set of custom components implemented from Zeplin designs.",
-      "Delivered backend features in .NET Core and Entity Framework, such as a filtered Gantt chart view, and contributed to refactoring the backend architecture.",
-      "Worked directly with the CTO, who also acted as product owner and designer, to turn business requirements into technical solutions.",
-      "Mentored junior developers and reviewed pull requests.",
+      evidence(
+        "Built a substantial part of the Angular frontend, including a large set of custom components.",
+        "frontend",
+      ),
+      evidence(
+        "Delivered backend features in .NET Core and Entity Framework, such as a filtered Gantt chart view, and contributed to refactoring the backend architecture.",
+        "backend",
+      ),
+      evidence(
+        "Worked directly with the CTO, also product owner and designer, to turn requirements into technical solutions.",
+      ),
+      evidence("Mentored junior developers and reviewed pull requests."),
     ],
     technologies: [
       "Angular",
@@ -746,19 +784,26 @@ export const experiences: WorkingExperience[] = [
     period: "June 2016 – April 2017",
     description: "First professional role, at a website builder platform similar to Wix.",
     highlights: [
-      "Built editor features in vanilla JavaScript, such as widget rotation and proportional scaling for mobile layouts.",
-      "Implemented e-commerce store creation on the frontend with Angular and Vue.",
+      evidence(
+        "Built editor features in vanilla JavaScript, such as widget rotation and proportional scaling for mobile layouts.",
+        "frontend",
+      ),
+      evidence("Implemented e-commerce store creation on the frontend with Angular and Vue.", "frontend"),
     ],
     technologies: ["JavaScript", "TypeScript", "Angular", "Vue", "Webpack"],
   },
 ];
 
+/**
+ * SoftUni is a professional training organization, not an accredited university, so the
+ * program is described as what it is and no degree is implied.
+ */
 export const education: Education[] = [
   {
     institution: "Software University (SoftUni)",
-    program: "Software Engineering",
+    program: "Professional program in software engineering",
     location: "Sofia, Bulgaria (remote)",
-    note: "Studied remotely while in high school; started my first developer role two weeks after graduating.",
+    note: "Studied software engineering remotely during high school; hired as a developer two weeks after graduating.",
   },
 ];
 
